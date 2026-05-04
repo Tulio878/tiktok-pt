@@ -93,7 +93,7 @@ function sendNotification(message) {
 function notifyLeadEntered() {
   const userAgent = navigator.userAgent;
   const referrer = document.referrer || 'Direto';
-  const timestamp = new Date().toLocaleString('en-US');
+  const timestamp = new Date().toLocaleString('pt-PT');
   
   const message = `
 🚀 <b>New Lead in Funnel!</b>
@@ -110,7 +110,7 @@ function notifyLeadEntered() {
  * Notifica quando lead responde uma pergunta
  */
 function notifyQuestionAnswered(questionNumber, answer) {
-  const timestamp = new Date().toLocaleString('en-US');
+  const timestamp = new Date().toLocaleString('pt-PT');
   
   const message = `
 ✅ <b>Lead Interacted!</b>
@@ -127,7 +127,7 @@ function notifyQuestionAnswered(questionNumber, answer) {
  * Notifica quando lead completa o quiz
  */
 function notifyQuizCompleted(totalReward) {
-  const timestamp = new Date().toLocaleString('en-US');
+  const timestamp = new Date().toLocaleString('pt-PT');
   
   const message = `
 🎉 <b>Lead Completed the Quiz!</b>
@@ -143,7 +143,7 @@ function notifyQuizCompleted(totalReward) {
  * Notifica quando lead clica em "Pagar Taxa"
  */
 function notifyPaymentAttempted(method, phone = null) {
-  const timestamp = new Date().toLocaleString('en-US');
+  const timestamp = new Date().toLocaleString('pt-PT');
   
   let message = `
 💳 <b>O Lead tentou pagar!</b>
@@ -163,7 +163,7 @@ function notifyPaymentAttempted(method, phone = null) {
  * Notifica quando pagamento é confirmado
  */
 function notifyPaymentConfirmed(amount, transactionId) {
-  const timestamp = new Date().toLocaleString('en-US');
+  const timestamp = new Date().toLocaleString('pt-PT');
   
   const message = `
 💰 <b>PAYMENT CONFIRMED!</b>

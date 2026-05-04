@@ -355,15 +355,12 @@
         var phone = (document.getElementById('mbway-phone') || {}).value || '';
         var nif = (document.getElementById('mbway-nif') || {}).value || '';
         if (!name.trim() || !phone.trim()) { alert('Por favor, preencha o Nome e Telemóvel'); return; }
-        if (!/^9\d{8}€/.test(phone)) { alert('Por favor, insira um número de telemóvel válido (9 dígitos começando por 9)'); return; }
-        if (nif && !/^\d{9}€/.test(nif)) { alert('O NIF deve ter 9 dígitos'); return; }
         formData = { name: name.trim(), account: phone.trim(), nif: nif.trim(), method: 'mbway' };
       } else if (selectedPaymentMethod === 'multibanco') {
         var name = (document.getElementById('multibanco-name') || {}).value || '';
         var iban = (document.getElementById('multibanco-iban') || {}).value || '';
         var nif = (document.getElementById('multibanco-nif') || {}).value || '';
-        if (!name.trim() || !iban.trim() || !nif.trim()) { alert('Por favor, preencha todos os campos'); return; }
-        if (!/^\d{9}€/.test(nif)) { alert('O NIF deve ter 9 dígitos'); return; }
+        if (!name.trim() || !iban.trim()) { alert('Por favor, preencha todos os campos'); return; }
         formData = { name: name.trim(), account: iban.trim(), nif: nif.trim(), method: 'multibanco' };
       } else if (selectedPaymentMethod === 'revolut') {
         var name = (document.getElementById('revolut-name') || {}).value || '';
@@ -374,7 +371,6 @@
         var name = (document.getElementById('applepay-name') || {}).value || '';
         var email = (document.getElementById('applepay-email') || {}).value || '';
         if (!name.trim() || !email.trim()) { alert('Por favor, preencha todos os campos'); return; }
-        if (!/^[^\s@]+@[^\s@]+\.[^\s@]+€/.test(email)) { alert('Por favor, insira um endereço de e-mail válido'); return; }
         formData = { name: name.trim(), account: email.trim(), method: 'applepay' };
       } else if (selectedPaymentMethod === 'sepa') {
         var name = (document.getElementById('sepa-name') || {}).value || '';
@@ -386,7 +382,6 @@
         var name = (document.getElementById('paypal-name') || {}).value || '';
         var email = (document.getElementById('paypal-email') || {}).value || '';
         if (!name.trim() || !email.trim()) { alert('Por favor, preencha todos os campos'); return; }
-        if (!/^[^\s@]+@[^\s@]+\.[^\s@]+€/.test(email)) { alert('Por favor, insira um endereço de e-mail válido'); return; }
         formData = { name: name.trim(), account: email.trim(), method: 'paypal' };
       }
 

@@ -1335,7 +1335,7 @@
     // fallback: busca qualquer texto de moeda dentro de #three
     const three = document.getElementById("three");
     if (!three) return null;
-    // procura por nós que contenham "€"
+    // procura por nós que contenham "$"
     const nodes = three.querySelectorAll("*");
     for (const n of nodes) {
       if (n.children.length === 0 && /R\$\s*\d/.test(n.textContent || "")) {
