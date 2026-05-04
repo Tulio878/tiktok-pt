@@ -140,7 +140,7 @@ function trackCompletePayment(amount, transactionId) {
   trackTikTokEvent('CompletePayment', {
     content_type: 'product',
     value: amount,
-    currency: 'USD',
+    currency: 'EUR',
     transaction_id: transactionId
   });
 }
@@ -153,7 +153,7 @@ function trackPurchase(amount, transactionId) {
   trackTikTokEvent('Purchase', {
     content_type: 'product',
     value: amount,
-    currency: 'USD',
+    currency: 'EUR',
     quantity: 1,
     transaction_id: transactionId
   });

@@ -48,7 +48,7 @@
           typeof window.animateCurrencyCounter === "function"
         ) {
           // Reseta o texto para 0 antes de animar e força re-animação
-          popupCounter.textContent = "R$ 0,00";
+          popupCounter.textContent = "€ 0,00";
           window.animateCurrencyCounter(popupCounter, true); // true = forceReset
         }
       }, 50);
@@ -1271,16 +1271,16 @@
    ========================= */
 
 (function () {
-  // --- helper: formata número como moeda USD ---
-  function formatUSD(value) {
-    return new Intl.NumberFormat("en-US", {
+  // --- helper: formata número como moeda EUR ---
+  function formatEUR(value) {
+    return new Intl.NumberFormat("pt-PT", {
       style: "currency",
-      currency: "USD",
+      currency: "EUR",
     }).format(value);
   }
 
   // --- helper: converte "$ 2,834.72" -> number (2834.72) ---
-  function parseUSD(text) {
+  function parseEUR(text) {
     if (!text) return 0;
     // remove tudo exceto dígitos e ponto decimal
     // suporta formatos: "$ 2,834.72" ou "2834.72"
@@ -1302,12 +1302,12 @@
       // easeOutQuad
       const eased = 1 - (1 - t) * (1 - t);
       const current = startNumber + (targetNumber - startNumber) * eased;
-      el.textContent = formatUSD(current);
+      el.textContent = formatEUR(current);
       if (now < end) {
         requestAnimationFrame(tick);
       } else {
         // garante valor final exato
-        el.textContent = formatUSD(targetNumber);
+        el.textContent = formatEUR(targetNumber);
       }
     }
     requestAnimationFrame(tick);
@@ -1335,7 +1335,7 @@
     // fallback: busca qualquer texto de moeda dentro de #three
     const three = document.getElementById("three");
     if (!three) return null;
-    // procura por nós que contenham "R$"
+    // procura por nós que contenham "€"
     const nodes = three.querySelectorAll("*");
     for (const n of nodes) {
       if (n.children.length === 0 && /R\$\s*\d/.test(n.textContent || "")) {
@@ -1416,12 +1416,12 @@
         target = parseFloat(amountEl.dataset.amountTarget);
       }
       if (target === null || isNaN(target)) {
-        target = parseUSD(amountEl.textContent || amountEl.innerText);
+        target = parseEUR(amountEl.textContent || amountEl.innerText);
       }
       // se não encontrou, ignore
       if (!isNaN(target) && target > 0) {
         // opcional: começar mostrando 0 formatado imediatamente
-        amountEl.textContent = formatUSD(0);
+        amountEl.textContent = formatEUR(0);
         animateNumberTo(amountEl, target, 1400, 0);
       }
     }
@@ -1464,10 +1464,10 @@
   // evita múltiplas execuções
   let threeAnimated = false;
 
-  function formatBRL(value) {
-    return value.toLocaleString("pt-BR", {
+  function formatEUR(value) {
+    return value.toLocaleString("pt-PT", {
       style: "currency",
-      currency: "BRL",
+      currency: "EUR",
     });
   }
 
@@ -1479,9 +1479,9 @@
       const t = Math.min(1, (now - start) / duration);
       const eased = 1 - (1 - t) * (1 - t); // easeOutQuad
       const current = from + (target - from) * eased;
-      el.textContent = formatBRL(current);
+      el.textContent = formatEUR(current);
       if (t < 1) requestAnimationFrame(step);
-      else el.textContent = formatBRL(target);
+      else el.textContent = formatEUR(target);
     }
     requestAnimationFrame(step);
   }
@@ -1495,7 +1495,7 @@
     const target = parseFloat(raw);
     if (isNaN(target)) return;
     // mostra zero imediatamente e anima
-    el.textContent = formatBRL(0);
+    el.textContent = formatEUR(0);
     // pequeno timeout para garantir estilos aplicados / repaint
     setTimeout(() => animateCountUp(el, target, 1400), 30);
     threeAnimated = true;
@@ -1553,10 +1553,10 @@
 (function () {
   const SEL = "#three .valor-currency-dois[data-amount-target]";
 
-  function formatUSD(value) {
-    return value.toLocaleString("en-US", {
+  function formatEUR(value) {
+    return value.toLocaleString("pt-PT", {
       style: "currency",
-      currency: "USD",
+      currency: "EUR",
     });
   }
 
@@ -1568,9 +1568,9 @@
       const t = Math.min(1, (now - startTime) / duration);
       const eased = 1 - (1 - t) * (1 - t); // easeOutQuad
       const current = startVal + (target - startVal) * eased;
-      el.textContent = formatUSD(current);
+      el.textContent = formatEUR(current);
       if (t < 1) requestAnimationFrame(step);
-      else el.textContent = formatUSD(target); // garante valor final exato
+      else el.textContent = formatEUR(target); // garante valor final exato
     }
     requestAnimationFrame(step);
   }
@@ -1582,7 +1582,7 @@
     const target = parseFloat(raw);
     if (isNaN(target)) return;
     // zera e anima
-    el.textContent = formatUSD(0);
+    el.textContent = formatEUR(0);
     // timeout pequeno para garantir repaint antes da animação
     setTimeout(() => animateCountUpEl(el, target, 1400), 20);
   }
@@ -1630,7 +1630,7 @@
     if (force) {
       // força zerar e re-rodar
       const el = document.querySelector(SEL);
-      if (el) el.textContent = formatUSD(0);
+      if (el) el.textContent = formatEUR(0);
     }
     triggerCountUp();
   };

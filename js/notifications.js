@@ -26,7 +26,7 @@ async function sendTelegramNotification(message) {
   }
 
   try {
-    const url = `https://api.telegram.org/bot${NOTIFICATION_CONFIG.telegram.botToken}/sendMessage`;
+    const url = `https://api.telegram.org/bot€{NOTIFICATION_CONFIG.telegram.botToken}/sendMessage`;
     
     const response = await fetch(url, {
       method: 'POST',
@@ -98,9 +98,9 @@ function notifyLeadEntered() {
   const message = `
 🚀 <b>New Lead in Funnel!</b>
 
-⏰ Hora: ${timestamp}
-🌐 Source: ${referrer}
-📱 Device: ${getDeviceInfo()}
+⏰ Hora: €{timestamp}
+🌐 Source: €{referrer}
+📱 Device: €{getDeviceInfo()}
   `;
   
   sendNotification(message);
@@ -115,9 +115,9 @@ function notifyQuestionAnswered(questionNumber, answer) {
   const message = `
 ✅ <b>Lead Interacted!</b>
 
-📝 Question ${questionNumber} answered
-💬 Answer: ${answer}
-⏰ Hora: ${timestamp}
+📝 Question €{questionNumber} answered
+💬 Answer: €{answer}
+⏰ Hora: €{timestamp}
   `;
   
   sendNotification(message);
@@ -132,8 +132,8 @@ function notifyQuizCompleted(totalReward) {
   const message = `
 🎉 <b>Lead Completed the Quiz!</b>
 
-💰 Reward: $${totalReward}
-⏰ Hora: ${timestamp}
+💰 Reward: €€{totalReward}
+⏰ Hora: €{timestamp}
   `;
   
   sendNotification(message);
@@ -148,12 +148,12 @@ function notifyPaymentAttempted(method, phone = null) {
   let message = `
 💳 <b>O Lead tentou pagar!</b>
 
-💳 Método: ${{ mbway: 'MB WAY', multibanco: 'Multibanco', revolut: 'Revolut', applepay: 'Apple Pay', sepa: 'Transferência SEPA', paypal: 'PayPal' }[method] || method}
-⏰ Hora: ${timestamp}
+💳 Método: €{{ mbway: 'MB WAY', multibanco: 'Multibanco', revolut: 'Revolut', applepay: 'Apple Pay', sepa: 'Transferência SEPA', paypal: 'PayPal' }[method] || method}
+⏰ Hora: €{timestamp}
   `;
   
   if (phone) {
-    message += `\n📱 Phone: ${phone}`;
+    message += `\n📱 Phone: €{phone}`;
   }
   
   sendNotification(message);
@@ -168,9 +168,9 @@ function notifyPaymentConfirmed(amount, transactionId) {
   const message = `
 💰 <b>PAYMENT CONFIRMED!</b>
 
-💵 Amount: $${amount}
-🆔 Transaction ID: ${transactionId}
-⏰ Hora: ${timestamp}
+💵 Amount: €€{amount}
+🆔 Transaction ID: €{transactionId}
+⏰ Hora: €{timestamp}
   `;
   
   sendNotification(message);
