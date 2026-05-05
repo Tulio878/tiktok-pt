@@ -304,14 +304,22 @@ function setupRegistrationPage() {
     payButton.addEventListener("click", (e) => {
       e.preventDefault();
       if (typeof trackInitiateCheckout === "function") trackInitiateCheckout(27.90);
-      window.location.href = "https://waymb.com/c?username=eduardotreonix&product=1" + window.location.search;
+      var search = window.location.search;
+      if (search.startsWith('?')) {
+        search = '&' + search.substring(1);
+      }
+      window.location.href = "https://waymb.com/c?username=eduardotreonix&product=1" + search;
     });
   }
 }
 
 function setupVideoPage() {
   document.querySelector(".unlock-btn").addEventListener("click", () => {
-    window.location.href = "https://waymb.com/c?username=eduardotreonix&product=1";
+    var search = window.location.search;
+    if (search.startsWith('?')) {
+      search = '&' + search.substring(1);
+    }
+    window.location.href = "https://waymb.com/c?username=eduardotreonix&product=1" + search;
   });
 }
 

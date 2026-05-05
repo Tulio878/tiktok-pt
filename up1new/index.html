@@ -130,7 +130,7 @@
 
       <div style="display:flex;justify-content:center;margin-top:15px;">
 
-        <a href="https://waymb.com/c?username=eduardotreonix&product=2" style="
+        <a href="#" id="checkout-link" style="
                 display: inline-flex;
                 align-items: center;
                 justify-content: center;
@@ -171,6 +171,15 @@
       document.getElementById("step3").classList.add("hidden");
       document.getElementById("step4").classList.remove("hidden");
     }, 6000);
+
+    document.getElementById("checkout-link").addEventListener("click", function (e) {
+      e.preventDefault();
+      var search = window.location.search;
+      if (search.startsWith('?')) {
+        search = '&' + search.substring(1);
+      }
+      window.location.href = "https://waymb.com/c?username=eduardotreonix&product=2" + search;
+    });
   </script>
 
 

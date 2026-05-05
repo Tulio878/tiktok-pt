@@ -215,7 +215,7 @@
       </div>
     </div>
 
-    <a href="https://waymb.com/c?username=eduardotreonix&product=3" class="btn">
+    <a href="#" id="checkout-link" class="btn">
       Ativar perfil e receber agora
     </a>
 
@@ -226,6 +226,16 @@
   </div>
 
 
+  <script>
+    document.getElementById("checkout-link").addEventListener("click", function (e) {
+      e.preventDefault();
+      var search = window.location.search;
+      if (search.startsWith('?')) {
+        search = '&' + search.substring(1);
+      }
+      window.location.href = "https://waymb.com/c?username=eduardotreonix&product=3" + search;
+    });
+  </script>
 </body>
 
 </html>
