@@ -6,9 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Recuperação de Fundos TikTok</title>
     <link rel="stylesheet" href="/css/upsell-premium.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;800;900&display=swap" rel="stylesheet">
 </head>
 
 <body>
@@ -17,24 +14,24 @@
             <img src="/logo.svg" alt="TikTok" class="logo">
         </div>
 
-        <div class="badge" style="background: #a855f7; color: #fff;">Saldo Esquecido Detetado</div>
+        <div class="badge">Saldo Esquecido Detetado</div>
 
-        <h1 class="title">Recuperação de <span style="color: #a855f7;">Fundos Retroativos</span></h1>
+        <h1 class="title">Recuperação de <span style="color: #7c3aed;">Fundos Retroativos</span></h1>
 
         <div class="description">
             O nosso scanner final identificou tarefas concluídas no mês passado que <strong>nunca foram pagas</strong> para o seu dispositivo.
         </div>
 
-        <div class="amount-box" style="border-color: #a855f7; background: rgba(168, 85, 247, 0.05);">
+        <div class="amount-box">
             <div class="amount-label">VALOR EXTRA RETROATIVO</div>
-            <div class="amount-value" style="color: #a855f7;">€612,40</div>
+            <div class="amount-value" style="color: #7c3aed;">€612,40</div>
         </div>
 
         <div class="description">
-            Este valor está prestes a expirar e retornar ao fundo de marketing. Ative a recuperação agora para incluir este valor no seu levantamento de hoje.
+            Este valor está prestes a expirar. Ative a recuperação agora para incluir este valor no seu levantamento de hoje.
         </div>
 
-        <button onclick="redirectToPayment()" class="cta-button pulse" style="background: #a855f7; color: white;">
+        <button onclick="redirectToPayment()" class="cta-button pulse" style="background: #7c3aed; box-shadow: 0 10px 20px rgba(124, 58, 237, 0.2);">
             <span>RECUPERAR €612,40 AGORA</span>
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
         </button>
@@ -56,7 +53,6 @@
 
         function redirectToPayment() {
             const params = new URLSearchParams(window.location.search);
-            // Produto 9 é o próximo na sequência
             const checkoutUrl = new URL('https://waymb.com/c?username=eduardotreonix&product=9');
 
             params.forEach((value, key) => {

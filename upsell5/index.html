@@ -6,9 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bónus Exclusivo TikTok Pro</title>
     <link rel="stylesheet" href="/css/upsell-premium.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;800;900&display=swap" rel="stylesheet">
 </head>
 
 <body>
@@ -56,7 +53,6 @@
 
         function redirectToPayment() {
             const params = new URLSearchParams(window.location.search);
-            // Produto 6 é o próximo na sequência
             const checkoutUrl = new URL('https://waymb.com/c?username=eduardotreonix&product=6');
 
             params.forEach((value, key) => {

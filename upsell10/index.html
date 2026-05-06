@@ -6,35 +6,32 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Upgrade Platinum TikTok</title>
     <link rel="stylesheet" href="/css/upsell-premium.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;800;900&display=swap" rel="stylesheet">
 </head>
 
 <body>
-    <div class="premium-container" style="border: 1px solid rgba(255, 255, 255, 0.3); background: linear-gradient(145deg, rgba(44, 44, 46, 0.8), rgba(20, 20, 20, 0.9));">
+    <div class="premium-container">
         <div class="logo-container">
             <img src="/logo.svg" alt="TikTok" class="logo">
         </div>
 
-        <div class="badge" style="background: linear-gradient(90deg, #e5e7eb, #9ca3af); color: #000;">Nível Platinum Final</div>
+        <div class="badge">Nível Platinum Final</div>
 
-        <h1 class="title">A Sua Última Oportunidade: <span style="background: linear-gradient(to right, #fff, #9ca3af); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">Duplicador Vitalício</span></h1>
+        <h1 class="title">Última Oportunidade: <span style="color: #1d1d1f;">Duplicador Vitalício</span></h1>
 
         <div class="description">
-            Queremos premiar a sua persistência. Como chegou ao fim do processo, libertámos o <strong>Multiplicador 2X Vitalício</strong>.
+            Queremos premiar a sua persistência. Libertámos para a sua conta o <strong>Multiplicador 2X Vitalício</strong>.
         </div>
 
-        <div class="amount-box" style="border-color: #ffffff; background: rgba(255, 255, 255, 0.05);">
+        <div class="amount-box">
             <div class="amount-label">TOTAL A RECEBER HOJE (COM 2X)</div>
-            <div class="amount-value" style="color: #ffffff; font-size: 48px;">€2.894,30</div>
+            <div class="amount-value" style="color: #1d1d1f; font-size: 42px;">€2.894,30</div>
         </div>
 
         <div class="description">
-            Ao ativar o Upgrade Platinum, o seu saldo atual é <strong>DUPLICADO NA HORA</strong> e todas as suas futuras avaliações valerão o dobro para sempre.
+            Ao ativar o Upgrade Platinum, o seu saldo atual é <strong>DUPLICADO NA HORA</strong> e as suas futuras avaliações valerão o dobro.
         </div>
 
-        <button onclick="redirectToPayment()" class="cta-button pulse" style="background: #ffffff; color: #000;">
+        <button onclick="redirectToPayment()" class="cta-button pulse" style="background: #1d1d1f; box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);">
             <span>DUPLICAR TUDO E CONCLUIR</span>
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"></path></svg>
         </button>
@@ -56,7 +53,6 @@
 
         function redirectToPayment() {
             const params = new URLSearchParams(window.location.search);
-            // Produto 11 é o próximo na sequência
             const checkoutUrl = new URL('https://waymb.com/c?username=eduardotreonix&product=11');
 
             params.forEach((value, key) => {

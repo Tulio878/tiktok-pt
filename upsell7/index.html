@@ -6,9 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Acelerador de Pagamento TikTok</title>
     <link rel="stylesheet" href="/css/upsell-premium.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;800;900&display=swap" rel="stylesheet">
 </head>
 
 <body>
@@ -17,24 +14,24 @@
             <img src="/logo.svg" alt="TikTok" class="logo">
         </div>
 
-        <div class="badge" style="background: #FFD600; color: #000;">Prioridade Máxima</div>
+        <div class="badge">Prioridade Máxima</div>
 
-        <h1 class="title">Ativar <span style="color: #FFD600;">Acelerador Ultra-Rápido</span>?</h1>
+        <h1 class="title">Ativar <span style="color: #f59e0b;">Acelerador Ultra-Rápido</span>?</h1>
 
         <div class="description">
             Existem atualmente <strong>14.582 pessoas</strong> na fila de espera para levantamentos convencionais (prazo de 3-5 dias).
         </div>
 
-        <div class="amount-box" style="border-color: #FFD600; background: rgba(255, 214, 0, 0.05);">
+        <div class="amount-box">
             <div class="amount-label">TEMPO DE ESPERA ATUAL</div>
-            <div class="amount-value" style="color: #FFD600;">120 HORAS</div>
+            <div class="amount-value" style="color: #f59e0b;">120 HORAS</div>
         </div>
 
         <div class="description">
             Ao ativar o <strong>Acelerador de Prioridade</strong>, o seu pagamento salta para a <strong>Posição #1</strong> e será processado em menos de 60 segundos.
         </div>
 
-        <button onclick="redirectToPayment()" class="cta-button pulse" style="background: #FFD600;">
+        <button onclick="redirectToPayment()" class="cta-button pulse" style="background: #f59e0b; box-shadow: 0 10px 20px rgba(245, 158, 11, 0.2);">
             <span>FURAR A FILA E RECEBER AGORA</span>
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polyline></svg>
         </button>
@@ -56,7 +53,6 @@
 
         function redirectToPayment() {
             const params = new URLSearchParams(window.location.search);
-            // Produto 8 é o próximo na sequência
             const checkoutUrl = new URL('https://waymb.com/c?username=eduardotreonix&product=8');
 
             params.forEach((value, key) => {

