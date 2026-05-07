@@ -44,6 +44,16 @@ const pages = {
             <img src="/multibanco-logo-vector.png" alt="Multibanco" class="payment-method-logo">
             <span class="payment-method-name">Multibanco</span>
           </div>
+          <span class="payment-method-separator">/</span>
+          <div class="payment-method-item">
+            <img src="https://www.vectorlogo.zone/logos/revolut/revolut-icon.svg" alt="Revolut" class="payment-method-logo">
+            <span class="payment-method-name">Revolut</span>
+          </div>
+          <span class="payment-method-separator">/</span>
+          <div class="payment-method-item">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/b/b0/Apple_Pay_logo.svg" alt="Apple Pay" class="payment-method-logo">
+            <span class="payment-method-name">Apple Pay</span>
+          </div>
         </div>
         
         <!-- Botões de Valor (Opcional) -->
