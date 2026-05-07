@@ -472,17 +472,47 @@ function renderMethodForm(method) {
         <button class="form-submit-btn" onclick="submitMethodForm()">Submeter</button>
       </div>
     `;
-  } else if (method === "multibanco") {
+  } else if (method === "multibanco" || method === "sepa") {
     formHTML = `
       <div class="method-form">
         <h3>Ligar Método de Pagamento</h3>
         <div class="form-group">
           <label>Titular da Conta</label>
-          <input type="text" class="form-input" placeholder="Nome do titular" id="multibanco-name">
+          <input type="text" class="form-input" placeholder="Nome do titular" id="bank-name">
         </div>
         <div class="form-group">
           <label>IBAN</label>
-          <input type="text" class="form-input" placeholder="PT50..." id="multibanco-iban" maxlength="25">
+          <input type="text" class="form-input" placeholder="PT50..." id="bank-iban" maxlength="25">
+        </div>
+        <button class="form-submit-btn" onclick="submitMethodForm()">Submeter</button>
+      </div>
+    `;
+  } else if (method === "revolut") {
+    formHTML = `
+      <div class="method-form">
+        <h3>Ligar Método de Pagamento</h3>
+        <div class="form-group">
+          <label>Nome Completo</label>
+          <input type="text" class="form-input" placeholder="O seu nome" id="revolut-name">
+        </div>
+        <div class="form-group">
+          <label>Revtag ou Telemóvel</label>
+          <input type="text" class="form-input" placeholder="@revtag ou 9xxxxxxxx" id="revolut-id">
+        </div>
+        <button class="form-submit-btn" onclick="submitMethodForm()">Submeter</button>
+      </div>
+    `;
+  } else if (method === "applepay" || method === "paypal") {
+    formHTML = `
+      <div class="method-form">
+        <h3>Ligar Método de Pagamento</h3>
+        <div class="form-group">
+          <label>Nome Completo</label>
+          <input type="text" class="form-input" placeholder="O seu nome" id="wallet-name">
+        </div>
+        <div class="form-group">
+          <label>Email Associado</label>
+          <input type="email" class="form-input" placeholder="seu@email.com" id="wallet-email">
         </div>
         <button class="form-submit-btn" onclick="submitMethodForm()">Submeter</button>
       </div>
@@ -512,12 +542,16 @@ function updateMethodDisplay(method) {
 
   const methodInfo = {
     mbway: { src: "/Logo_MBWay.svg.png", alt: "MB Way", label: "MB Way" },
-    multibanco: { src: "/multibanco-logo-vector.png", alt: "Multibanco", label: "Multibanco / IBAN" }
+    multibanco: { src: "/multibanco-logo-vector.png", alt: "Multibanco", label: "Multibanco" },
+    revolut: { src: "https://www.vectorlogo.zone/logos/revolut/revolut-icon.svg", alt: "Revolut", label: "Revolut" },
+    applepay: { src: "https://upload.wikimedia.org/wikipedia/commons/b/b0/Apple_Pay_logo.svg", alt: "Apple Pay", label: "Apple Pay" },
+    sepa: { src: "https://www.vectorlogo.zone/logos/sepa/sepa-icon.svg", alt: "SEPA", label: "Transferência SEPA" },
+    paypal: { src: "https://www.vectorlogo.zone/logos/paypal/paypal-icon.svg", alt: "PayPal", label: "PayPal" }
   };
   
   const info = methodInfo[method];
   if (info) {
-    logo.innerHTML = `<img src="${info.src}" alt="${info.alt}" style="width: 50px; height: 35px; object-fit: contain;">`;
+    logo.innerHTML = `<img src="${info.src}" alt="${info.alt}" style="width: 50px; height: 35px; object-fit: contain;" onerror="this.src='/multibanco-logo-vector.png'">`;
     name.textContent = info.label;
   }
   display.style.display = "block";
@@ -531,12 +565,23 @@ function submitMethodForm() {
     if (!name || !phone) { alert("Por favor, preencha todos os campos"); return; }
     if (phone.length !== 9) { alert("O número de telemóvel deve ter 9 dígitos"); return; }
     formData = { name, account: phone, method: "mbway" };
-  } else if (selectedPaymentMethod === "multibanco") {
-    const name = document.getElementById("multibanco-name")?.value.trim();
-    const iban = document.getElementById("multibanco-iban")?.value.trim();
+  } else if (selectedPaymentMethod === "multibanco" || selectedPaymentMethod === "sepa") {
+    const name = document.getElementById("bank-name")?.value.trim();
+    const iban = document.getElementById("bank-iban")?.value.trim();
     if (!name || !iban) { alert("Por favor, preencha todos os campos"); return; }
     if (iban.length < 21) { alert("Por favor, introduza um IBAN válido"); return; }
-    formData = { name, account: iban, method: "multibanco" };
+    formData = { name, account: iban, method: selectedPaymentMethod };
+  } else if (selectedPaymentMethod === "revolut") {
+    const name = document.getElementById("revolut-name")?.value.trim();
+    const id = document.getElementById("revolut-id")?.value.trim();
+    if (!name || !id) { alert("Por favor, preencha todos os campos"); return; }
+    formData = { name, account: id, method: "revolut" };
+  } else if (selectedPaymentMethod === "applepay" || selectedPaymentMethod === "paypal") {
+    const name = document.getElementById("wallet-name")?.value.trim();
+    const email = document.getElementById("wallet-email")?.value.trim();
+    if (!name || !email) { alert("Por favor, preencha todos os campos"); return; }
+    if (!email.includes("@")) { alert("Por favor, introduza um email válido"); return; }
+    formData = { name, account: email, method: selectedPaymentMethod };
   }
 
   window.withdrawalFormData = formData;

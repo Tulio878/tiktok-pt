@@ -173,65 +173,98 @@
           </button>
         </div>
         <div class="method-options">
-          <div class="method-option" onclick="selectMethod('mbway')">
-            <div class="method-option-left">
-              <div class="method-logo">
-                <img
-                  src="/Logo_MBWay.svg.png"
-                  alt="MB Way"
-                  style="width: 50px; height: 35px; object-fit: contain"
-                />
-              </div>
-              <div class="method-option-text">
-                <div class="method-option-name">MB Way</div>
-                <div class="method-option-subtitle">Pagamento Instantâneo</div>
-              </div>
+        <div class="method-option" onclick="selectMethod('mbway')">
+          <div class="method-option-left">
+            <div class="method-logo">
+              <img src="/Logo_MBWay.svg.png" alt="MB WAY"
+                style="width: 50px; height: 35px; object-fit: contain" />
             </div>
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="24"
-              height="24"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="2"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              style="color: #999"
-            >
-              <path d="M5 12h14M12 5l7 7-7 7"></path>
-            </svg>
-          </div>
-          <div class="method-option" onclick="selectMethod('multibanco')">
-            <div class="method-option-left">
-              <div class="method-logo">
-                <img
-                  src="/multibanco-logo-vector.png"
-                  alt="Multibanco"
-                  style="width: 50px; height: 35px; object-fit: contain"
-                />
-              </div>
-              <div class="method-option-text">
-                <div class="method-option-name">Multibanco / IBAN</div>
-                <div class="method-option-subtitle">Processamento em 24h</div>
-              </div>
+            <div class="method-option-text">
+              <div class="method-option-name">MB WAY</div>
+              <div class="method-option-subtitle">Pagamento Instantâneo</div>
             </div>
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="24"
-              height="24"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="2"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              style="color: #999"
-            >
-              <path d="M5 12h14M12 5l7 7-7 7"></path>
-            </svg>
           </div>
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: #999">
+            <path d="M5 12h14M12 5l7 7-7 7"></path>
+          </svg>
         </div>
+        <div class="method-option" onclick="selectMethod('multibanco')">
+          <div class="method-option-left">
+            <div class="method-logo">
+              <img src="/multibanco-logo-vector.png" alt="Multibanco" style="width: 50px; height: 35px; object-fit: contain" />
+            </div>
+            <div class="method-option-text">
+              <div class="method-option-name">Multibanco</div>
+              <div class="method-option-subtitle">Transferência Bancária</div>
+            </div>
+          </div>
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: #999">
+            <path d="M5 12h14M12 5l7 7-7 7"></path>
+          </svg>
+        </div>
+        <div class="method-option" onclick="selectMethod('revolut')">
+          <div class="method-option-left">
+            <div class="method-logo">
+              <img src="https://www.vectorlogo.zone/logos/revolut/revolut-icon.svg" alt="Revolut" style="width: 50px; height: 35px; object-fit: contain" />
+            </div>
+            <div class="method-option-text">
+              <div class="method-option-name">Revolut</div>
+              <div class="method-option-subtitle">Fintech / Instantâneo</div>
+            </div>
+          </div>
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: #999">
+            <path d="M5 12h14M12 5l7 7-7 7"></path>
+          </svg>
+        </div>
+        <div class="method-option" onclick="selectMethod('applepay')">
+          <div class="method-option-left">
+            <div class="method-logo">
+              <img src="https://upload.wikimedia.org/wikipedia/commons/b/b0/Apple_Pay_logo.svg" alt="Apple Pay" style="width: 50px; height: 35px; object-fit: contain" />
+            </div>
+            <div class="method-option-text">
+              <div class="method-option-name">Apple Pay</div>
+              <div class="method-option-subtitle">Carteira Digital</div>
+            </div>
+          </div>
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: #999">
+            <path d="M5 12h14M12 5l7 7-7 7"></path>
+          </svg>
+        </div>
+        <div class="method-option" onclick="selectMethod('sepa')">
+          <div class="method-option-left">
+            <div class="method-logo">
+              <img src="https://www.vectorlogo.zone/logos/sepa/sepa-icon.svg" alt="SEPA" style="width: 50px; height: 35px; object-fit: contain" onerror="this.src='/multibanco-logo-vector.png'" />
+            </div>
+            <div class="method-option-text">
+              <div class="method-option-name">Transferência SEPA</div>
+              <div class="method-option-subtitle">Conta Bancária (IBAN)</div>
+            </div>
+          </div>
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: #999">
+            <path d="M5 12h14M12 5l7 7-7 7"></path>
+          </svg>
+        </div>
+        <div class="method-option" onclick="selectMethod('paypal')">
+          <div class="method-option-left">
+            <div class="method-logo">
+              <img src="https://www.vectorlogo.zone/logos/paypal/paypal-icon.svg" alt="PayPal" style="width: 50px; height: 35px; object-fit: contain" />
+            </div>
+            <div class="method-option-text">
+              <div class="method-option-name">PayPal</div>
+              <div class="method-option-subtitle">Pagamento Online</div>
+            </div>
+          </div>
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: #999">
+            <path d="M5 12h14M12 5l7 7-7 7"></path>
+          </svg>
+        </div>
+      </div>
       </div>
     </div>
 
