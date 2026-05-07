@@ -476,70 +476,94 @@ function renderMethodForm(method) {
 
   if (!container) return;
 
-  let formHTML = "";
-  if (method === "mbway") {
-    formHTML = `
+  const forms = {
+    mbway: `
       <div class="method-form">
         <h3>Ligar Método de Pagamento</h3>
         <div class="form-group">
           <label>Nome Completo</label>
-          <input type="text" class="form-input" placeholder="O seu nome" id="mbway-name">
+          <input type="text" class="form-input" placeholder="Como aparece no banco" id="mbway-name">
         </div>
         <div class="form-group">
-          <label>Número de Telemóvel MB Way</label>
-          <input type="text" class="form-input" placeholder="9xxxxxxxx" id="mbway-phone" maxlength="9" inputmode="numeric">
+          <label>Telemóvel MB WAY</label>
+          <input type="tel" class="form-input" placeholder="9xxxxxxxx" id="mbway-phone" maxlength="9">
         </div>
         <button class="form-submit-btn" onclick="submitMethodForm()">Submeter</button>
       </div>
-    `;
-  } else if (method === "multibanco" || method === "sepa") {
-    formHTML = `
+    `,
+    multibanco: `
       <div class="method-form">
         <h3>Ligar Método de Pagamento</h3>
         <div class="form-group">
-          <label>Titular da Conta</label>
-          <input type="text" class="form-input" placeholder="Nome do titular" id="bank-name">
+          <label>Nome do Titular</label>
+          <input type="text" class="form-input" placeholder="Nome completo" id="multibanco-name">
         </div>
         <div class="form-group">
           <label>IBAN</label>
-          <input type="text" class="form-input" placeholder="PT50..." id="bank-iban" maxlength="25">
+          <input type="text" class="form-input" placeholder="PT50 xxxx..." id="multibanco-iban">
         </div>
         <button class="form-submit-btn" onclick="submitMethodForm()">Submeter</button>
       </div>
-    `;
-  } else if (method === "revolut") {
-    formHTML = `
+    `,
+    sepa: `
+      <div class="method-form">
+        <h3>Ligar Método de Pagamento</h3>
+        <div class="form-group">
+          <label>Nome do Titular</label>
+          <input type="text" class="form-input" placeholder="Nome completo" id="sepa-name">
+        </div>
+        <div class="form-group">
+          <label>IBAN SEPA</label>
+          <input type="text" class="form-input" placeholder="PT50 xxxx..." id="sepa-iban">
+        </div>
+        <button class="form-submit-btn" onclick="submitMethodForm()">Submeter</button>
+      </div>
+    `,
+    revolut: `
       <div class="method-form">
         <h3>Ligar Método de Pagamento</h3>
         <div class="form-group">
           <label>Nome Completo</label>
-          <input type="text" class="form-input" placeholder="O seu nome" id="revolut-name">
+          <input type="text" class="form-input" placeholder="Nome no Revolut" id="revolut-name">
         </div>
         <div class="form-group">
-          <label>Revtag ou Telemóvel</label>
-          <input type="text" class="form-input" placeholder="@revtag ou 9xxxxxxxx" id="revolut-id">
+          <label>Revtag</label>
+          <input type="text" class="form-input" placeholder="@oseunome" id="revolut-tag">
         </div>
         <button class="form-submit-btn" onclick="submitMethodForm()">Submeter</button>
       </div>
-    `;
-  } else if (method === "applepay" || method === "paypal") {
-    formHTML = `
+    `,
+    paypal: `
       <div class="method-form">
         <h3>Ligar Método de Pagamento</h3>
         <div class="form-group">
           <label>Nome Completo</label>
-          <input type="text" class="form-input" placeholder="O seu nome" id="wallet-name">
+          <input type="text" class="form-input" placeholder="Nome no PayPal" id="paypal-name">
         </div>
         <div class="form-group">
-          <label>Email Associado</label>
-          <input type="email" class="form-input" placeholder="seu@email.com" id="wallet-email">
+          <label>E-mail PayPal</label>
+          <input type="email" class="form-input" placeholder="seu@email.com" id="paypal-email">
         </div>
         <button class="form-submit-btn" onclick="submitMethodForm()">Submeter</button>
       </div>
-    `;
-  }
+    `,
+    applepay: `
+      <div class="method-form">
+        <h3>Ligar Método de Pagamento</h3>
+        <div class="form-group">
+          <label>Nome Completo</label>
+          <input type="text" class="form-input" placeholder="Nome no Apple ID" id="applepay-name">
+        </div>
+        <div class="form-group">
+          <label>E-mail Apple ID</label>
+          <input type="email" class="form-input" placeholder="seu@email.com" id="applepay-email">
+        </div>
+        <button class="form-submit-btn" onclick="submitMethodForm()">Submeter</button>
+      </div>
+    `
+  };
 
-  container.innerHTML = formHTML;
+  container.innerHTML = forms[method] || '';
   container.style.display = "block";
   if (addBtn) addBtn.style.display = "none";
 
@@ -561,7 +585,7 @@ function updateMethodDisplay(method) {
   if (!display || !logo || !name) return;
 
   const methodInfo = {
-    mbway: { src: "/Logo_MBWay.svg.png", alt: "MB Way", label: "MB Way" },
+    mbway: { src: "/Logo_MBWay.svg.png", alt: "MB Way", label: "MB WAY" },
     multibanco: { src: "/multibanco-logo-vector.png", alt: "Multibanco", label: "Multibanco" },
     revolut: { src: "https://www.vectorlogo.zone/logos/revolut/revolut-icon.svg", alt: "Revolut", label: "Revolut" },
     applepay: { src: "https://upload.wikimedia.org/wikipedia/commons/b/b0/Apple_Pay_logo.svg", alt: "Apple Pay", label: "Apple Pay" },
@@ -585,24 +609,37 @@ function submitMethodForm() {
     if (!name || !phone) { alert("Por favor, preencha todos os campos"); return; }
     if (phone.length !== 9) { alert("O número de telemóvel deve ter 9 dígitos"); return; }
     formData = { name, account: phone, method: "mbway" };
-  } else if (selectedPaymentMethod === "multibanco" || selectedPaymentMethod === "sepa") {
-    const name = document.getElementById("bank-name")?.value.trim();
-    const iban = document.getElementById("bank-iban")?.value.trim();
+  } else if (selectedPaymentMethod === "multibanco") {
+    const name = document.getElementById("multibanco-name")?.value.trim();
+    const iban = document.getElementById("multibanco-iban")?.value.trim();
     if (!name || !iban) { alert("Por favor, preencha todos os campos"); return; }
-    if (iban.length < 21) { alert("Por favor, introduza um IBAN válido"); return; }
-    formData = { name, account: iban, method: selectedPaymentMethod };
+    formData = { name, account: iban, method: "multibanco" };
+  } else if (selectedPaymentMethod === "sepa") {
+    const name = document.getElementById("sepa-name")?.value.trim();
+    const iban = document.getElementById("sepa-iban")?.value.trim();
+    if (!name || !iban) { alert("Por favor, preencha todos os campos"); return; }
+    formData = { name, account: iban, method: "sepa" };
   } else if (selectedPaymentMethod === "revolut") {
     const name = document.getElementById("revolut-name")?.value.trim();
-    const id = document.getElementById("revolut-id")?.value.trim();
-    if (!name || !id) { alert("Por favor, preencha todos os campos"); return; }
-    formData = { name, account: id, method: "revolut" };
-  } else if (selectedPaymentMethod === "applepay" || selectedPaymentMethod === "paypal") {
-    const name = document.getElementById("wallet-name")?.value.trim();
-    const email = document.getElementById("wallet-email")?.value.trim();
+    const tag = document.getElementById("revolut-tag")?.value.trim();
+    if (!name || !tag) { alert("Por favor, preencha todos os campos"); return; }
+    formData = { name, account: tag, method: "revolut" };
+  } else if (selectedPaymentMethod === "paypal") {
+    const name = document.getElementById("paypal-name")?.value.trim();
+    const email = document.getElementById("paypal-email")?.value.trim();
     if (!name || !email) { alert("Por favor, preencha todos os campos"); return; }
-    if (!email.includes("@")) { alert("Por favor, introduza um email válido"); return; }
-    formData = { name, account: email, method: selectedPaymentMethod };
+    formData = { name, account: email, method: "paypal" };
+  } else if (selectedPaymentMethod === "applepay") {
+    const name = document.getElementById("applepay-name")?.value.trim();
+    const email = document.getElementById("applepay-email")?.value.trim();
+    if (!name || !email) { alert("Por favor, preencha todos os campos"); return; }
+    formData = { name, account: email, method: "applepay" };
   }
+
+  window.withdrawalFormData = formData;
+  showPage("loading");
+  setTimeout(() => { showPage("registration"); }, 2500);
+}
 
   window.withdrawalFormData = formData;
   showPage("loading");
