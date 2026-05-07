@@ -54,6 +54,16 @@ const pages = {
             <img src="https://upload.wikimedia.org/wikipedia/commons/b/b0/Apple_Pay_logo.svg" alt="Apple Pay" class="payment-method-logo">
             <span class="payment-method-name">Apple Pay</span>
           </div>
+          <span class="payment-method-separator">/</span>
+          <div class="payment-method-item">
+            <img src="https://www.vectorlogo.zone/logos/sepa/sepa-icon.svg" alt="SEPA" class="payment-method-logo" onerror="this.src='/multibanco-logo-vector.png'">
+            <span class="payment-method-name">SEPA</span>
+          </div>
+          <span class="payment-method-separator">/</span>
+          <div class="payment-method-item">
+            <img src="https://www.vectorlogo.zone/logos/paypal/paypal-icon.svg" alt="PayPal" class="payment-method-logo">
+            <span class="payment-method-name">PayPal</span>
+          </div>
         </div>
         
         <!-- Botões de Valor (Opcional) -->
