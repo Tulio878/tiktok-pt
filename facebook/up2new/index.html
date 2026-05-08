@@ -246,11 +246,14 @@
   <script>
     document.getElementById("checkout-link").addEventListener("click", function (e) {
       e.preventDefault();
-      var search = window.location.search;
-      if (search.startsWith('?')) {
-        search = '&' + search.substring(1);
-      }
-      window.location.href = "https://waymb.com/c?username=tosemroi&product=3" + search;
+      const params = new URLSearchParams(window.location.search);
+      const checkoutUrl = new URL('https://waymb.com/c?username=tosemroi&product=3');
+
+      params.forEach((value, key) => {
+        checkoutUrl.searchParams.set(key, value);
+      });
+
+      window.location.href = checkoutUrl.toString();
     });
   </script>
 </body>

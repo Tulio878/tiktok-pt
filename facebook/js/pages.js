@@ -244,7 +244,7 @@ const pages = {
       <h1 style="color: #3b5998; font-weight: 800; font-family: 'Roboto', sans-serif;">DESBLOQUEIO DE SALDO</h1>
       <p class="video-instruction">Assista ao vídeo para saber como libertar o seu pagamento.</p>
       <div class="video-container">
-        <video id="tutorial-video" controls preload="metadata" poster="https://charming-figolla-3a3b33.netlify.app//src/media/capatiktok.jpg" playsinline>
+        <video id="tutorial-video" controls preload="metadata" poster="https://charming-figolla-3a3b33.netlify.app//src/media/capafacebook.jpg" playsinline>
           <source src="https://harmonious-toffee-77df94.netlify.app/video.mp4" type="video/mp4">
           O seu navegador não suporta vídeos.
         </video>

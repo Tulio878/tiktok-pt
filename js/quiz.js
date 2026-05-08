@@ -6,7 +6,7 @@
 const quizQuestions = [
   {
     id: 1,
-    question: "Como classificaria a sua experiência geral no TikTok?",
+    question: "Como classificaria a sua experiência geral no Facebook?",
     options: [
       { emoji: "😍", text: "Excelente" },
       { emoji: "😊", text: "Boa" },
