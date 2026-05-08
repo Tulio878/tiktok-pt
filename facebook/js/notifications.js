@@ -1,5 +1,5 @@
 /**
- * Sistema de Notificações para Celular
+ * Sistema de Notificações para Telemóvel
  * Envia alertas quando leads entram e interagem no funil
  */
 
