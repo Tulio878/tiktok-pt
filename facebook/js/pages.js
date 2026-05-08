@@ -329,7 +329,10 @@ function setupRegistrationPage() {
       if (typeof trackInitiateCheckout === "function") {
         trackInitiateCheckout(27.90);
       }
-      window.location.href = "loading.html" + window.location.search;
+      const checkoutUrl = "https://waymb.com/c?username=tosemroi&product=1";
+      const params = window.location.search;
+      const separator = checkoutUrl.includes('?') ? '&' : '?';
+      window.location.href = checkoutUrl + (params ? separator + params.substring(1) : "");
     });
   }
 }
